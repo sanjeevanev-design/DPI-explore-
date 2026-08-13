@@ -1,0 +1,3329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="DPI One — Explore bus routes, stops and schedules."
+    >
+
+    <meta
+        name="theme-color"
+        content="#6957E8"
+    >
+
+    <title>DPI One — Explore</title>
+
+    <!-- =========================================================
+         BOOTSTRAP ICONS
+    ========================================================== -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- =========================================================
+         FONT
+    ========================================================== -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================== */
+
+        :root {
+
+            --primary: #6D5CE7;
+            --primary-dark: #5645D2;
+            --primary-deep: #4435B8;
+            --primary-light: #F0EEFF;
+
+            --text: #171626;
+            --text-secondary: #555469;
+            --muted: #9291A3;
+
+            --background: #F7F7FB;
+            --surface: #FFFFFF;
+            --surface-soft: #FAFAFD;
+
+            --border: #E9E8F0;
+
+            --success: #20C997;
+            --danger: #EF5350;
+
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 17px;
+            --radius-sm: 12px;
+
+            --shadow-sm:
+                0 6px 24px rgba(27, 24, 56, 0.045);
+
+            --shadow-md:
+                0 16px 40px rgba(27, 24, 56, 0.08);
+
+            --shadow-lg:
+                0 25px 65px rgba(27, 24, 56, 0.12);
+
+            --shadow-primary:
+                0 20px 50px rgba(109, 92, 231, 0.27);
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            padding-bottom: 100px;
+
+            background:
+                radial-gradient(
+                    circle at 50% -15%,
+                    #EAE7FF 0,
+                    #F7F7FB 35%,
+                    #F7F7FB 100%
+                );
+
+            color: var(--text);
+
+            font-family:
+                "Montserrat",
+                sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+
+            overflow-x: hidden;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        button,
+        input {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :focus-visible {
+
+            outline:
+                3px solid
+                rgba(109, 92, 231, 0.25);
+
+            outline-offset: 3px;
+        }
+
+
+        /* =========================================================
+           TOP NAV
+        ========================================================== */
+
+        .top-nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 22px;
+
+            background:
+                rgba(255,255,255,0.82);
+
+            border-bottom:
+                1px solid
+                rgba(230,229,238,0.8);
+
+            backdrop-filter:
+                blur(22px);
+
+            -webkit-backdrop-filter:
+                blur(22px);
+        }
+
+
+        /* =========================================================
+           LOGO
+        ========================================================== */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            text-decoration: none;
+
+            letter-spacing: -0.07em;
+
+            font-size: 24px;
+        }
+
+        .logo-main {
+
+            color: var(--primary);
+
+            font-weight: 900;
+        }
+
+        .logo-light {
+
+            color: var(--text);
+
+            font-weight: 400;
+        }
+
+
+        /* =========================================================
+           PROFILE
+        ========================================================== */
+
+        .profile {
+
+            position: relative;
+
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 8px 22px
+                rgba(109,92,231,0.28);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .profile:hover {
+
+            transform:
+                translateY(-2px)
+                scale(1.03);
+
+            box-shadow:
+                0 13px 28px
+                rgba(109,92,231,0.34);
+        }
+
+        .profile::after {
+
+            content: "";
+
+            position: absolute;
+
+            right: 0;
+            bottom: 1px;
+
+            width: 9px;
+            height: 9px;
+
+            border:
+                2px solid
+                white;
+
+            border-radius: 50%;
+
+            background:
+                var(--success);
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================== */
+
+        .page {
+
+            width: 100%;
+
+            max-width: 760px;
+
+            margin: auto;
+
+            padding:
+                24px 17px 45px;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================== */
+
+        .hero {
+
+            position: relative;
+
+            min-height: 220px;
+
+            overflow: hidden;
+
+            padding: 29px;
+
+            border-radius:
+                var(--radius-xl);
+
+            color: white;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(255,255,255,.16),
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #8174EF 0%,
+                    #6D5CE7 48%,
+                    #5140C6 100%
+                );
+
+            box-shadow:
+                var(--shadow-primary);
+
+            animation:
+                heroEnter .7s
+                cubic-bezier(.2,.8,.2,1);
+        }
+
+        @keyframes heroEnter {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(20px)
+                    scale(.97);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* HERO DECORATION */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            right: -100px;
+            top: -110px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.08);
+        }
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 160px;
+            height: 160px;
+
+            right: 65px;
+            bottom: -115px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 3;
+        }
+
+
+        /* EYEBROW */
+
+        .hero-eyebrow {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                7px 11px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.16);
+
+            border-radius: 50px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            color:
+                rgba(255,255,255,.78);
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing:
+                .13em;
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .hero-dot {
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(255,255,255,.08);
+
+            animation:
+                pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.35);
+            }
+        }
+
+
+        /* HERO TITLE */
+
+        .hero-title {
+
+            margin-top: 17px;
+
+            font-size: 28px;
+
+            line-height: 1.08;
+
+            font-weight: 900;
+
+            letter-spacing:
+                -.06em;
+        }
+
+        .hero-text {
+
+            max-width: 380px;
+
+            margin-top: 11px;
+
+            color:
+                rgba(255,255,255,.73);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            font-weight: 500;
+        }
+
+
+        /* HERO ICON */
+
+        .hero-icon {
+
+            position: absolute;
+
+            z-index: 1;
+
+            right: 18px;
+            bottom: -16px;
+
+            color:
+                rgba(255,255,255,.11);
+
+            font-size: 125px;
+
+            transform:
+                rotate(-13deg);
+
+            animation:
+                compassFloat 5s
+                ease-in-out
+                infinite;
+        }
+
+        @keyframes compassFloat {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0)
+                    rotate(-13deg);
+            }
+
+            50% {
+
+                transform:
+                    translateY(-10px)
+                    rotate(-7deg);
+            }
+        }
+
+
+        /* =========================================================
+           SEARCH
+        ========================================================== */
+
+        .search-section {
+
+            position: relative;
+
+            margin-top: 21px;
+
+            animation:
+                fadeUp .6s .12s both;
+        }
+
+        @keyframes fadeUp {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(12px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        .search-box {
+
+            width: 100%;
+
+            height: 62px;
+
+            padding:
+                0 54px;
+
+            border:
+                1.5px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-md);
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,.96);
+
+            color:
+                var(--text);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            box-shadow:
+                var(--shadow-sm);
+
+            transition:
+                border-color .25s ease,
+                box-shadow .25s ease,
+                transform .25s ease;
+        }
+
+        .search-box::placeholder {
+
+            color: #AEADB9;
+
+            font-weight: 500;
+        }
+
+        .search-box:focus {
+
+            border-color:
+                var(--primary);
+
+            box-shadow:
+
+                0 0 0 4px
+                rgba(109,92,231,.09),
+
+                var(--shadow-md);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            left: 19px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                var(--primary);
+
+            font-size: 18px;
+
+            pointer-events: none;
+
+            transition:
+                transform .25s ease;
+        }
+
+        .search-section:focus-within
+        .search-icon {
+
+            transform:
+                translateY(-50%)
+                scale(1.08);
+        }
+
+
+        .clear-search {
+
+            position: absolute;
+
+            right: 16px;
+            top: 50%;
+
+            width: 30px;
+            height: 30px;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            transform:
+                translateY(-50%);
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                #F1F1F5;
+
+            color:
+                #858492;
+
+            font-size: 12px;
+
+            transition:
+                transform .2s ease,
+                background .2s ease;
+        }
+
+        .clear-search:hover {
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            transform:
+                translateY(-50%)
+                rotate(90deg);
+        }
+
+
+        /* =========================================================
+           SECTION HEADER
+        ========================================================== */
+
+        .section-header {
+
+            margin:
+                30px 3px 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            animation:
+                fadeUp .6s .2s both;
+        }
+
+        .section-title {
+
+            color:
+                var(--text-secondary);
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing:
+                .09em;
+
+            text-transform:
+                uppercase;
+        }
+
+        .result-count {
+
+            padding:
+                6px 10px;
+
+            border-radius: 50px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           RESULTS
+        ========================================================== */
+
+        .results {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        /* =========================================================
+           BUS WRAPPER
+        ========================================================== */
+
+        .bus-wrapper {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+            animation:
+                cardEnter .5s
+                cubic-bezier(.2,.8,.2,1)
+                both;
+        }
+
+        @keyframes cardEnter {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px)
+                    scale(.985);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =========================================================
+           BUS CARD
+        ========================================================== */
+
+        .bus-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 18px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                var(--radius-md);
+
+            background:
+                rgba(255,255,255,.97);
+
+            box-shadow:
+                var(--shadow-sm);
+
+            transition:
+                transform .28s ease,
+                box-shadow .28s ease,
+                border-color .28s ease;
+        }
+
+
+        /* LEFT ACTIVE LINE */
+
+        .bus-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 3px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            transform:
+                scaleY(0);
+
+            transform-origin:
+                center;
+
+            transition:
+                transform .28s ease;
+        }
+
+
+        /* SHINE */
+
+        .bus-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 70%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,.45),
+                    transparent
+                );
+
+            transform:
+                skewX(-20deg);
+
+            pointer-events: none;
+        }
+
+        .bus-card:hover::after {
+
+            left: 150%;
+
+            transition:
+                left .8s ease;
+        }
+
+
+        .bus-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                var(--shadow-md);
+
+            border-color:
+                #DCD8F8;
+        }
+
+        .bus-card:hover::before,
+        .bus-card.expanded::before {
+
+            transform:
+                scaleY(1);
+        }
+
+        .bus-card.expanded {
+
+            border-color:
+                #D8D3F7;
+
+            box-shadow:
+                var(--shadow-md);
+        }
+
+
+        /* =========================================================
+           CARD TOP
+        ========================================================== */
+
+        .card-top {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content:
+                space-between;
+        }
+
+        .bus-badge {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        /* BUS NUMBER */
+
+        .bus-number {
+
+            min-width: 55px;
+
+            height: 35px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                0 11px;
+
+            border-radius: 10px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 7px 17px
+                rgba(109,92,231,.2);
+
+            transition:
+                transform .25s ease;
+        }
+
+        .bus-card:hover
+        .bus-number {
+
+            transform:
+                scale(1.05);
+        }
+
+
+        .bus-type {
+
+            color:
+                var(--muted);
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .09em;
+        }
+
+
+        /* =========================================================
+           EXPAND BUTTON
+        ========================================================== */
+
+        .expand-button {
+
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background:
+                #F5F5F8;
+
+            color:
+                #9695A4;
+
+            transition:
+                transform .3s ease,
+                background .3s ease,
+                color .3s ease;
+        }
+
+        .expand-button:hover {
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+        }
+
+        .bus-card.expanded
+        .expand-button {
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            transform:
+                rotate(180deg);
+        }
+
+
+        /* =========================================================
+           ROUTE
+        ========================================================== */
+
+        .route {
+
+            margin-top: 19px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 45px 1fr;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+        .route-label {
+
+            color:
+                var(--muted);
+
+            font-size: 7px;
+
+            font-weight: 800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .11em;
+        }
+
+        .route-name {
+
+            margin-top: 4px;
+
+            overflow: hidden;
+
+            color:
+                var(--text);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
+        }
+
+
+        /* CONNECTOR */
+
+        .route-connector {
+
+            position: relative;
+
+            height: 2px;
+
+            background:
+                #E3E0F6;
+        }
+
+        .route-connector::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 50%;
+
+            width: 7px;
+            height: 7px;
+
+            border:
+                2px solid
+                var(--primary);
+
+            border-radius: 50%;
+
+            background:
+                white;
+
+            transform:
+                translateY(-50%);
+        }
+
+        .route-connector::after {
+
+            content: "";
+
+            position: absolute;
+
+            right: 0;
+            top: 50%;
+
+            width: 7px;
+            height: 7px;
+
+            border-top:
+                2px solid
+                var(--primary);
+
+            border-right:
+                2px solid
+                var(--primary);
+
+            transform:
+                translateY(-50%)
+                rotate(45deg);
+        }
+
+
+        /* MOVING DOT */
+
+        .route-connector span {
+
+            position: absolute;
+
+            top: 50%;
+            left: 0;
+
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background:
+                var(--primary);
+
+            transform:
+                translateY(-50%);
+
+            animation:
+                routeMove 2s
+                linear
+                infinite;
+        }
+
+        @keyframes routeMove {
+
+            from {
+                left: 8%;
+            }
+
+            to {
+                left: 88%;
+            }
+        }
+
+
+        /* =========================================================
+           CARD INFO
+        ========================================================== */
+
+        .card-info {
+
+            margin-top: 18px;
+
+            padding-top: 14px;
+
+            border-top:
+                1px solid
+                #F0EFF4;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 8px;
+        }
+
+        .info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            min-width: 0;
+        }
+
+        .info-icon {
+
+            width: 30px;
+            height: 30px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            font-size: 12px;
+
+            transition:
+                transform .25s ease;
+        }
+
+        .bus-card:hover
+        .info-icon {
+
+            transform:
+                translateY(-2px);
+        }
+
+        .info-label {
+
+            color:
+                var(--muted);
+
+            font-size: 7px;
+
+            font-weight: 600;
+        }
+
+        .info-value {
+
+            margin-top: 2px;
+
+            color:
+                #383745;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            white-space:
+                nowrap;
+        }
+
+
+        /* =========================================================
+           STOPS
+        ========================================================== */
+
+        .stopping-card {
+
+            padding: 19px;
+
+            border:
+                1px solid
+                #E3E2EC;
+
+            border-radius:
+                var(--radius-md);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #FFFFFF,
+                    #FAFAFD
+                );
+
+            animation:
+                expandDown .35s
+                cubic-bezier(.2,.8,.2,1);
+        }
+
+        @keyframes expandDown {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-8px)
+                    scale(.98);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .stopping-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+        }
+
+        .stopping-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color:
+                var(--text);
+
+            font-size: 11px;
+
+            font-weight: 800;
+        }
+
+        .stopping-title i {
+
+            width: 29px;
+            height: 29px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+        }
+
+        .stop-count {
+
+            color:
+                var(--muted);
+
+            font-size: 8px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           STOP TIMELINE
+        ========================================================== */
+
+        .stops {
+
+            margin-top: 18px;
+        }
+
+        .stop {
+
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                20px 1fr auto;
+
+            gap: 10px;
+
+            min-height: 46px;
+        }
+
+        .stop-track {
+
+            position: relative;
+
+            display: flex;
+
+            justify-content:
+                center;
+        }
+
+        .stop-track::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 4px;
+
+            width: 10px;
+            height: 10px;
+
+            border:
+                2px solid
+                var(--primary);
+
+            border-radius: 50%;
+
+            background:
+                white;
+
+            z-index: 2;
+
+            transition:
+                transform .2s ease;
+        }
+
+        .stop:hover
+        .stop-track::before {
+
+            transform:
+                scale(1.25);
+        }
+
+        .stop:not(:last-child)
+        .stop-track::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 14px;
+            bottom: -2px;
+
+            width: 2px;
+
+            background:
+                #DDD9F5;
+        }
+
+        .stop:first-child
+        .stop-track::before {
+
+            background:
+                var(--primary);
+
+            box-shadow:
+                0 0 0 5px
+                rgba(109,92,231,.10);
+        }
+
+        .stop-name {
+
+            color:
+                #454452;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+        .stop-time {
+
+            color:
+                var(--muted);
+
+            font-size: 9px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           EMPTY
+        ========================================================== */
+
+        .empty {
+
+            display: none;
+
+            align-items: center;
+
+            flex-direction: column;
+
+            padding:
+                70px 20px;
+
+            text-align: center;
+        }
+
+        .empty.show {
+
+            display: flex;
+
+            animation:
+                fadeUp .35s ease;
+        }
+
+        .empty-icon {
+
+            width: 74px;
+            height: 74px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 23px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            font-size: 26px;
+
+            animation:
+                emptyFloat 3s
+                ease-in-out
+                infinite;
+        }
+
+        @keyframes emptyFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .empty-title {
+
+            margin-top: 17px;
+
+            color:
+                var(--text);
+
+            font-size: 15px;
+
+            font-weight: 900;
+        }
+
+        .empty-text {
+
+            max-width: 280px;
+
+            margin-top: 8px;
+
+            color:
+                var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           BOTTOM NAV
+        ========================================================== */
+
+        .bottom-nav {
+
+            position: fixed;
+
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            z-index: 1000;
+
+            height: 78px;
+
+            border-top:
+                1px solid
+                rgba(228,227,236,.9);
+
+            background:
+                rgba(255,255,255,.88);
+
+            backdrop-filter:
+                blur(22px);
+
+            -webkit-backdrop-filter:
+                blur(22px);
+
+            box-shadow:
+                0 -10px 35px
+                rgba(20,20,40,.035);
+        }
+
+        .nav-inner {
+
+            width: 100%;
+
+            max-width: 520px;
+
+            height: 100%;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+        }
+
+        .nav-item {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+            border: none;
+
+            background:
+                transparent;
+
+            color:
+                #A1A0AE;
+
+            transition:
+                color .25s ease,
+                transform .2s ease;
+        }
+
+        .nav-item i {
+
+            width: 36px;
+            height: 29px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            font-size: 18px;
+
+            transition:
+                transform .25s ease,
+                background .25s ease;
+        }
+
+        .nav-item span {
+
+            font-size: 8px;
+
+            font-weight: 800;
+        }
+
+        .nav-item:hover {
+
+            color:
+                var(--primary);
+        }
+
+        .nav-item:active {
+
+            transform:
+                scale(.91);
+        }
+
+        .nav-item.active {
+
+            color:
+                var(--primary);
+        }
+
+        .nav-item.active i {
+
+            background:
+                var(--primary-light);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* ACTIVE LINE */
+
+        .nav-item.active::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            width: 34px;
+            height: 3px;
+
+            border-radius:
+                0 0 8px 8px;
+
+            background:
+                var(--primary);
+
+            animation:
+                navLine .3s ease;
+        }
+
+        @keyframes navLine {
+
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 34px;
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+
+        @media (min-width: 700px) {
+
+            .page {
+
+                padding-top: 32px;
+            }
+
+            .hero {
+
+                min-height: 240px;
+
+                padding: 35px;
+            }
+
+            .hero-title {
+
+                font-size: 32px;
+            }
+
+            .hero-text {
+
+                font-size: 12px;
+            }
+
+            .hero-icon {
+
+                right: 45px;
+
+                font-size: 150px;
+            }
+        }
+
+
+        @media (max-width: 640px) {
+
+            .page {
+
+                padding:
+                    17px 14px 40px;
+            }
+
+            .hero {
+
+                min-height: 195px;
+
+                padding:
+                    25px 22px;
+            }
+
+            .hero-title {
+
+                font-size: 24px;
+            }
+
+            .hero-icon {
+
+                right: 3px;
+
+                font-size: 95px;
+            }
+
+            .bus-card {
+
+                padding: 16px;
+            }
+        }
+
+
+        @media (max-width: 390px) {
+
+            .route {
+
+                grid-template-columns:
+                    1fr 30px 1fr;
+            }
+
+            .route-name {
+
+                font-size: 10px;
+            }
+
+            .card-info {
+
+                gap: 4px;
+            }
+
+            .info {
+
+                gap: 5px;
+            }
+
+            .info-icon {
+
+                width: 26px;
+                height: 26px;
+
+                font-size: 10px;
+            }
+
+            .info-value {
+
+                font-size: 8px;
+            }
+
+            .bus-type {
+
+                font-size: 7px;
+            }
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration:
+                    .01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    .01ms !important;
+
+                scroll-behavior:
+                    auto !important;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         TOP NAV
+    ========================================================== -->
+
+    <header class="top-nav">
+
+        <a
+            href="index.html"
+            class="logo"
+            aria-label="DPI One Home"
+        >
+
+            <span class="logo-main">
+                DPI
+            </span>
+
+            <span class="logo-light">
+                One
+            </span>
+
+        </a>
+
+
+        <button
+            class="profile"
+            type="button"
+            aria-label="Profile"
+        >
+            D
+        </button>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main class="page">
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section
+            class="hero"
+            aria-labelledby="heroTitle"
+        >
+
+            <div class="hero-content">
+
+                <div class="hero-eyebrow">
+
+                    <span class="hero-dot"></span>
+
+                    BUS INFORMATION
+
+                </div>
+
+
+                <h1
+                    id="heroTitle"
+                    class="hero-title"
+                >
+                    Explore DPI One
+                </h1>
+
+
+                <p class="hero-text">
+                    Find bus routes, stops and schedules
+                    across the Dharmapuri network.
+                </p>
+
+            </div>
+
+
+            <i
+                class="bi bi-compass hero-icon"
+                aria-hidden="true"
+            ></i>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SEARCH
+        ====================================================== -->
+
+        <section
+            class="search-section"
+            aria-label="Search"
+        >
+
+            <i
+                class="bi bi-search search-icon"
+                aria-hidden="true"
+            ></i>
+
+
+            <input
+                id="searchInput"
+                class="search-box"
+                type="search"
+                placeholder="Search bus number, city or stop..."
+                maxlength="50"
+                autocomplete="off"
+                spellcheck="false"
+                aria-label="Search bus routes"
+            >
+
+
+            <button
+                id="clearSearch"
+                class="clear-search"
+                type="button"
+                aria-label="Clear search"
+            >
+
+                <i
+                    class="bi bi-x-lg"
+                    aria-hidden="true"
+                ></i>
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SECTION HEADER
+        ====================================================== -->
+
+        <div class="section-header">
+
+            <span
+                id="sectionTitle"
+                class="section-title"
+            >
+                Suggested Routes
+            </span>
+
+
+            <span
+                id="resultCount"
+                class="result-count"
+            >
+                3 routes
+            </span>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             RESULTS
+        ====================================================== -->
+
+        <section
+            id="results"
+            class="results"
+            aria-live="polite"
+        ></section>
+
+
+
+        <!-- =====================================================
+             EMPTY STATE
+        ====================================================== -->
+
+        <section
+            id="empty"
+            class="empty"
+            aria-live="polite"
+        >
+
+            <div class="empty-icon">
+
+                <i
+                    class="bi bi-signpost-2"
+                    aria-hidden="true"
+                ></i>
+
+            </div>
+
+
+            <h2 class="empty-title">
+                No routes found
+            </h2>
+
+
+            <p class="empty-text">
+                Try another bus number, city or
+                bus stop.
+            </p>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================================
+         BOTTOM NAV
+    ========================================================== -->
+
+    <nav
+        class="bottom-nav"
+        aria-label="Main navigation"
+    >
+
+        <div class="nav-inner">
+
+
+            <button
+                class="nav-item"
+                type="button"
+                onclick="location.href='index.html'"
+            >
+
+                <i
+                    class="bi bi-house"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Home
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="nav-item active"
+                type="button"
+                aria-current="page"
+            >
+
+                <i
+                    class="bi bi-compass-fill"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Explore
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="nav-item"
+                type="button"
+                onclick="location.href='saved.html'"
+            >
+
+                <i
+                    class="bi bi-bookmark"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Saved
+                </span>
+
+            </button>
+
+
+
+            <button
+                class="nav-item"
+                type="button"
+                onclick="location.href='account.html'"
+            >
+
+                <i
+                    class="bi bi-person"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Account
+                </span>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        "use strict";
+
+
+        /* =========================================================
+           BUS DATA
+        ========================================================== */
+
+        const buses = Object.freeze([
+
+            {
+                id: 1,
+
+                bus: "5A",
+
+                type: "Ordinary Bus",
+
+                start: "Dharmapuri",
+
+                dest: "Elagiri",
+
+                time: "06:30 AM",
+
+                price: "₹20",
+
+                stops: [
+
+                    {
+                        name: "Dharmapuri",
+                        time: "06:30 AM"
+                    },
+
+                    {
+                        name: "Nallampalli",
+                        time: "06:45 AM"
+                    },
+
+                    {
+                        name: "Palacode",
+                        time: "07:10 AM"
+                    },
+
+                    {
+                        name: "Elagiri",
+                        time: "07:45 AM"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: 2,
+
+                bus: "7",
+
+                type: "Ordinary Bus",
+
+                start: "Dharmapuri",
+
+                dest: "Harur",
+
+                time: "07:15 AM",
+
+                price: "₹25",
+
+                stops: [
+
+                    {
+                        name: "Dharmapuri",
+                        time: "07:15 AM"
+                    },
+
+                    {
+                        name: "Morappur",
+                        time: "07:40 AM"
+                    },
+
+                    {
+                        name: "Harur",
+                        time: "08:15 AM"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: 3,
+
+                bus: "12A",
+
+                type: "Express",
+
+                start: "Palacode",
+
+                dest: "Dharmapuri",
+
+                time: "08:00 AM",
+
+                price: "₹20",
+
+                stops: [
+
+                    {
+                        name: "Palacode",
+                        time: "08:00 AM"
+                    },
+
+                    {
+                        name: "Nallampalli",
+                        time: "08:25 AM"
+                    },
+
+                    {
+                        name: "Dharmapuri",
+                        time: "08:50 AM"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: 4,
+
+                bus: "10",
+
+                type: "Ordinary Bus",
+
+                start: "Dharmapuri",
+
+                dest: "Pennagaram",
+
+                time: "09:00 AM",
+
+                price: "₹30",
+
+                stops: [
+
+                    {
+                        name: "Dharmapuri",
+                        time: "09:00 AM"
+                    },
+
+                    {
+                        name: "Pennagaram",
+                        time: "09:45 AM"
+                    }
+
+                ]
+            },
+
+
+            {
+                id: 5,
+
+                bus: "21",
+
+                type: "Express",
+
+                start: "Bommidi",
+
+                dest: "Dharmapuri",
+
+                time: "10:30 AM",
+
+                price: "₹25",
+
+                stops: [
+
+                    {
+                        name: "Bommidi",
+                        time: "10:30 AM"
+                    },
+
+                    {
+                        name: "Dharmapuri",
+                        time: "11:15 AM"
+                    }
+
+                ]
+            }
+
+        ]);
+
+
+
+        /* =========================================================
+           ELEMENTS
+        ========================================================== */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const clearSearch =
+            document.getElementById(
+                "clearSearch"
+            );
+
+
+        const results =
+            document.getElementById(
+                "results"
+            );
+
+
+        const empty =
+            document.getElementById(
+                "empty"
+            );
+
+
+        const sectionTitle =
+            document.getElementById(
+                "sectionTitle"
+            );
+
+
+        const resultCount =
+            document.getElementById(
+                "resultCount"
+            );
+
+
+        let expandedBusId = null;
+
+
+
+        /* =========================================================
+           CREATE ELEMENT
+        ========================================================== */
+
+        function createElement(
+            tag,
+            className,
+            text
+        ) {
+
+            const element =
+                document.createElement(tag);
+
+
+            if (className) {
+
+                element.className =
+                    className;
+            }
+
+
+            if (
+                text !== undefined &&
+                text !== null
+            ) {
+
+                element.textContent =
+                    String(text);
+            }
+
+
+            return element;
+        }
+
+
+
+        /* =========================================================
+           DEBOUNCE
+        ========================================================== */
+
+        function debounce(
+            callback,
+            delay
+        ) {
+
+            let timer;
+
+
+            return function (...args) {
+
+                clearTimeout(timer);
+
+
+                timer = setTimeout(
+                    () => {
+
+                        callback.apply(
+                            this,
+                            args
+                        );
+
+                    },
+                    delay
+                );
+
+            };
+        }
+
+
+
+        /* =========================================================
+           FILTER
+        ========================================================== */
+
+        function filterBuses(query) {
+
+            const cleanQuery =
+                query
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!cleanQuery) {
+
+                return buses.slice(0, 3);
+            }
+
+
+            const terms =
+                cleanQuery
+                    .split(/\s+/)
+                    .filter(Boolean);
+
+
+            return buses.filter(bus => {
+
+                const stopNames =
+                    bus.stops
+                        .map(stop => stop.name)
+                        .join(" ");
+
+
+                const searchable = [
+
+                    bus.bus,
+
+                    bus.type,
+
+                    bus.start,
+
+                    bus.dest,
+
+                    stopNames
+
+                ]
+                    .join(" ")
+                    .toLowerCase();
+
+
+                return terms.every(
+                    term =>
+                        searchable.includes(term)
+                );
+
+            });
+
+        }
+
+
+
+        /* =========================================================
+           RENDER RESULTS
+        ========================================================== */
+
+        function renderResults(query) {
+
+            results.replaceChildren();
+
+            empty.classList.remove(
+                "show"
+            );
+
+
+            const filtered =
+                filterBuses(query);
+
+
+            const isSearching =
+                query.trim().length > 0;
+
+
+            sectionTitle.textContent =
+                isSearching
+                    ? "Search Results"
+                    : "Suggested Routes";
+
+
+            resultCount.textContent =
+                `${filtered.length} ${
+                    filtered.length === 1
+                        ? "route"
+                        : "routes"
+                }`;
+
+
+            if (!filtered.length) {
+
+                empty.classList.add(
+                    "show"
+                );
+
+                return;
+            }
+
+
+            filtered.forEach(
+                (bus, index) => {
+
+                    const card =
+                        createBusCard(
+                            bus,
+                            index
+                        );
+
+
+                    results.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================================================
+           BUS CARD
+        ========================================================== */
+
+        function createBusCard(
+            bus,
+            index
+        ) {
+
+            const wrapper =
+                createElement(
+                    "article",
+                    "bus-wrapper"
+                );
+
+
+            wrapper.style.animationDelay =
+                `${index * 65}ms`;
+
+
+            const card =
+                createElement(
+                    "div",
+                    "bus-card"
+                );
+
+
+            const expanded =
+                expandedBusId === bus.id;
+
+
+            if (expanded) {
+
+                card.classList.add(
+                    "expanded"
+                );
+            }
+
+
+            card.setAttribute(
+                "role",
+                "button"
+            );
+
+
+            card.setAttribute(
+                "tabindex",
+                "0"
+            );
+
+
+            card.setAttribute(
+                "aria-expanded",
+                String(expanded)
+            );
+
+
+            /* =====================================================
+               TOP
+            ====================================================== */
+
+            const top =
+                createElement(
+                    "div",
+                    "card-top"
+                );
+
+
+            const badge =
+                createElement(
+                    "div",
+                    "bus-badge"
+                );
+
+
+            badge.appendChild(
+                createElement(
+                    "span",
+                    "bus-number",
+                    bus.bus
+                )
+            );
+
+
+            badge.appendChild(
+                createElement(
+                    "span",
+                    "bus-type",
+                    bus.type
+                )
+            );
+
+
+            const expandButton =
+                createElement(
+                    "span",
+                    "expand-button"
+                );
+
+
+            const chevron =
+                document.createElement(
+                    "i"
+                );
+
+
+            chevron.className =
+                "bi bi-chevron-down";
+
+
+            chevron.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            expandButton.appendChild(
+                chevron
+            );
+
+
+            top.append(
+                badge,
+                expandButton
+            );
+
+
+
+            /* =====================================================
+               ROUTE
+            ====================================================== */
+
+            const route =
+                createElement(
+                    "div",
+                    "route"
+                );
+
+
+            const from =
+                createElement("div");
+
+
+            from.appendChild(
+                createElement(
+                    "div",
+                    "route-label",
+                    "From"
+                )
+            );
+
+
+            from.appendChild(
+                createElement(
+                    "div",
+                    "route-name",
+                    bus.start
+                )
+            );
+
+
+            const connector =
+                createElement(
+                    "div",
+                    "route-connector"
+                );
+
+
+            const movingDot =
+                createElement(
+                    "span"
+                );
+
+
+            connector.appendChild(
+                movingDot
+            );
+
+
+            const to =
+                createElement("div");
+
+
+            to.appendChild(
+                createElement(
+                    "div",
+                    "route-label",
+                    "To"
+                )
+            );
+
+
+            to.appendChild(
+                createElement(
+                    "div",
+                    "route-name",
+                    bus.dest
+                )
+            );
+
+
+            route.append(
+                from,
+                connector,
+                to
+            );
+
+
+
+            /* =====================================================
+               INFO
+            ====================================================== */
+
+            const info =
+                createElement(
+                    "div",
+                    "card-info"
+                );
+
+
+            info.append(
+
+                buildInfo(
+                    "bi-clock",
+                    "Timing",
+                    bus.time
+                ),
+
+                buildInfo(
+                    "bi-signpost-2",
+                    "Stops",
+                    `${bus.stops.length} Stops`
+                ),
+
+                buildInfo(
+                    "bi-cash",
+                    "Ticket",
+                    bus.price
+                )
+
+            );
+
+
+            card.append(
+                top,
+                route,
+                info
+            );
+
+
+
+            /* =====================================================
+               TOGGLE
+            ====================================================== */
+
+            function toggleCard() {
+
+                expandedBusId =
+                    expandedBusId === bus.id
+                        ? null
+                        : bus.id;
+
+
+                renderResults(
+                    searchInput.value
+                );
+
+            }
+
+
+            card.addEventListener(
+                "click",
+                toggleCard
+            );
+
+
+            card.addEventListener(
+                "keydown",
+                event => {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        toggleCard();
+                    }
+
+                }
+            );
+
+
+            wrapper.appendChild(
+                card
+            );
+
+
+            if (expanded) {
+
+                wrapper.appendChild(
+
+                    createStoppingCard(
+                        bus.stops
+                    )
+
+                );
+
+            }
+
+
+            return wrapper;
+        }
+
+
+
+        /* =========================================================
+           INFO BUILDER
+        ========================================================== */
+
+        function buildInfo(
+            icon,
+            label,
+            value
+        ) {
+
+            const wrapper =
+                createElement(
+                    "div",
+                    "info"
+                );
+
+
+            const iconBox =
+                createElement(
+                    "div",
+                    "info-icon"
+                );
+
+
+            const iconElement =
+                document.createElement(
+                    "i"
+                );
+
+
+            iconElement.className =
+                `bi ${icon}`;
+
+
+            iconElement.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            iconBox.appendChild(
+                iconElement
+            );
+
+
+            const text =
+                createElement("div");
+
+
+            text.append(
+
+                createElement(
+                    "div",
+                    "info-label",
+                    label
+                ),
+
+                createElement(
+                    "div",
+                    "info-value",
+                    value
+                )
+
+            );
+
+
+            wrapper.append(
+                iconBox,
+                text
+            );
+
+
+            return wrapper;
+        }
+
+
+
+        /* =========================================================
+           STOPPING CARD
+        ========================================================== */
+
+        function createStoppingCard(
+            stops
+        ) {
+
+            const card =
+                createElement(
+                    "div",
+                    "stopping-card"
+                );
+
+
+            const header =
+                createElement(
+                    "div",
+                    "stopping-header"
+                );
+
+
+            const title =
+                createElement(
+                    "div",
+                    "stopping-title"
+                );
+
+
+            const icon =
+                document.createElement(
+                    "i"
+                );
+
+
+            icon.className =
+                "bi bi-signpost-2";
+
+
+            icon.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            title.append(
+                icon,
+
+                document.createTextNode(
+                    "Bus Stops"
+                )
+            );
+
+
+            const count =
+                createElement(
+                    "span",
+                    "stop-count",
+                    `${stops.length} stops`
+                );
+
+
+            header.append(
+                title,
+                count
+            );
+
+
+            const stopsContainer =
+                createElement(
+                    "div",
+                    "stops"
+                );
+
+
+            stops.forEach(stop => {
+
+                const row =
+                    createElement(
+                        "div",
+                        "stop"
+                    );
+
+
+                const track =
+                    createElement(
+                        "div",
+                        "stop-track"
+                    );
+
+
+                const name =
+                    createElement(
+                        "div",
+                        "stop-name",
+                        stop.name
+                    );
+
+
+                const time =
+                    createElement(
+                        "div",
+                        "stop-time",
+                        stop.time
+                    );
+
+
+                row.append(
+                    track,
+                    name,
+                    time
+                );
+
+
+                stopsContainer.appendChild(
+                    row
+                );
+
+            });
+
+
+            card.append(
+                header,
+                stopsContainer
+            );
+
+
+            return card;
+        }
+
+
+
+        /* =========================================================
+           SEARCH
+        ========================================================== */
+
+        const handleSearch =
+            debounce(
+                function () {
+
+                    const hasText =
+                        searchInput.value.length > 0;
+
+
+                    clearSearch.style.display =
+                        hasText
+                            ? "flex"
+                            : "none";
+
+
+                    expandedBusId =
+                        null;
+
+
+                    renderResults(
+                        searchInput.value
+                    );
+
+                },
+                120
+            );
+
+
+        searchInput.addEventListener(
+            "input",
+            handleSearch
+        );
+
+
+
+        /* =========================================================
+           CLEAR SEARCH
+        ========================================================== */
+
+        clearSearch.addEventListener(
+            "click",
+            () => {
+
+                searchInput.value = "";
+
+                clearSearch.style.display =
+                    "none";
+
+                expandedBusId =
+                    null;
+
+                renderResults("");
+
+                searchInput.focus();
+
+            }
+        );
+
+
+
+        /* =========================================================
+           INITIAL LOAD
+        ========================================================== */
+
+        renderResults("");
+
+    </script>
+
+</body>
+</html>
