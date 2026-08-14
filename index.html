@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -20,17 +22,13 @@
 
     <title>DPI One — Explore</title>
 
-    <!-- =========================================================
-         BOOTSTRAP ICONS
-    ========================================================== -->
+    <!-- Bootstrap Icons -->
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     >
 
-    <!-- =========================================================
-         FONT
-    ========================================================== -->
+    <!-- Montserrat Font -->
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -49,12 +47,7 @@
 
     <style>
 
-        /* =========================================================
-           ROOT
-        ========================================================== */
-
         :root {
-
             --primary: #6D5CE7;
             --primary-dark: #5645D2;
             --primary-deep: #4435B8;
@@ -78,23 +71,12 @@
             --radius-md: 17px;
             --radius-sm: 12px;
 
-            --shadow-sm:
-                0 6px 24px rgba(27, 24, 56, 0.045);
-
-            --shadow-md:
-                0 16px 40px rgba(27, 24, 56, 0.08);
-
-            --shadow-lg:
-                0 25px 65px rgba(27, 24, 56, 0.12);
-
-            --shadow-primary:
-                0 20px 50px rgba(109, 92, 231, 0.27);
+            --shadow-sm: 0 6px 24px rgba(27, 24, 56, 0.045);
+            --shadow-md: 0 16px 40px rgba(27, 24, 56, 0.08);
+            --shadow-lg: 0 25px 65px rgba(27, 24, 56, 0.12);
+            --shadow-primary: 0 20px 50px rgba(109, 92, 231, 0.27);
         }
 
-
-        /* =========================================================
-           RESET
-        ========================================================== */
 
         * {
             margin: 0;
@@ -102,15 +84,15 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
-
             min-height: 100vh;
-
-            padding-bottom: 100px;
+            padding-bottom: 110px;
 
             background:
                 radial-gradient(
@@ -122,85 +104,61 @@
 
             color: var(--text);
 
-            font-family:
-                "Montserrat",
-                sans-serif;
+            font-family: "Montserrat", sans-serif;
 
             -webkit-font-smoothing: antialiased;
 
             overflow-x: hidden;
         }
 
+
         button,
         input {
             font: inherit;
+            -webkit-tap-highlight-color: transparent;
         }
+
 
         button {
             cursor: pointer;
         }
 
-        button,
-        input {
-            -webkit-tap-highlight-color: transparent;
-        }
 
         :focus-visible {
-
-            outline:
-                3px solid
-                rgba(109, 92, 231, 0.25);
-
+            outline: 3px solid rgba(109, 92, 231, 0.25);
             outline-offset: 3px;
         }
 
 
-        /* =========================================================
+        /* =========================
            TOP NAV
-        ========================================================== */
+        ========================= */
 
         .top-nav {
-
             position: sticky;
-
             top: 0;
-
             z-index: 1000;
 
             height: 70px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
-            padding:
-                0 22px;
+            padding: 0 22px;
 
-            background:
-                rgba(255,255,255,0.82);
+            background: rgba(255,255,255,0.82);
 
             border-bottom:
-                1px solid
-                rgba(230,229,238,0.8);
+                1px solid rgba(230,229,238,0.8);
 
-            backdrop-filter:
-                blur(22px);
-
-            -webkit-backdrop-filter:
-                blur(22px);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
         }
 
 
-        /* =========================================================
-           LOGO
-        ========================================================== */
-
         .logo {
-
             display: flex;
-
             align-items: center;
 
             text-decoration: none;
@@ -210,39 +168,34 @@
             font-size: 24px;
         }
 
+
         .logo-main {
-
             color: var(--primary);
-
             font-weight: 900;
         }
 
+
         .logo-light {
-
             color: var(--text);
-
             font-weight: 400;
         }
 
 
-        /* =========================================================
+        /* =========================
            PROFILE
-        ========================================================== */
+        ========================= */
 
         .profile {
-
             position: relative;
 
             width: 40px;
             height: 40px;
 
             display: flex;
-
             align-items: center;
             justify-content: center;
 
             border: none;
-
             border-radius: 50%;
 
             color: white;
@@ -255,60 +208,33 @@
                 );
 
             font-size: 11px;
-
             font-weight: 900;
 
             box-shadow:
-                0 8px 22px
-                rgba(109,92,231,0.28);
+                0 8px 22px rgba(109,92,231,0.28);
 
             transition:
                 transform .25s ease,
                 box-shadow .25s ease;
         }
 
-        .profile:hover {
 
+        .profile:hover {
             transform:
                 translateY(-2px)
                 scale(1.03);
 
             box-shadow:
-                0 13px 28px
-                rgba(109,92,231,0.34);
-        }
-
-        .profile::after {
-
-            content: "";
-
-            position: absolute;
-
-            right: 0;
-            bottom: 1px;
-
-            width: 9px;
-            height: 9px;
-
-            border:
-                2px solid
-                white;
-
-            border-radius: 50%;
-
-            background:
-                var(--success);
+                0 13px 28px rgba(109,92,231,0.34);
         }
 
 
-        /* =========================================================
+        /* =========================
            PAGE
-        ========================================================== */
+        ========================= */
 
         .page {
-
             width: 100%;
-
             max-width: 760px;
 
             margin: auto;
@@ -318,27 +244,32 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            HERO
-        ========================================================== */
+           HEIGHT REDUCED
+        ========================= */
 
         .hero {
-
             position: relative;
 
-            min-height: 220px;
+            /*
+                Reduced from 170px
+                to 145px
+            */
+            min-height: 145px;
 
             overflow: hidden;
 
-            padding: 29px;
+            /*
+                Reduced vertical padding
+            */
+            padding: 22px 27px;
 
-            border-radius:
-                var(--radius-xl);
+            border-radius: var(--radius-xl);
 
             color: white;
 
             background:
-
                 radial-gradient(
                     circle at 85% 15%,
                     rgba(255,255,255,.16),
@@ -352,29 +283,26 @@
                     #5140C6 100%
                 );
 
-            box-shadow:
-                var(--shadow-primary);
+            box-shadow: var(--shadow-primary);
 
             animation:
-                heroEnter .7s
+                heroEnter
+                .7s
                 cubic-bezier(.2,.8,.2,1);
         }
+
 
         @keyframes heroEnter {
 
             from {
-
                 opacity: 0;
-
                 transform:
                     translateY(20px)
                     scale(.97);
             }
 
             to {
-
                 opacity: 1;
-
                 transform:
                     translateY(0)
                     scale(1);
@@ -382,10 +310,7 @@
         }
 
 
-        /* HERO DECORATION */
-
         .hero::before {
-
             content: "";
 
             position: absolute;
@@ -402,8 +327,8 @@
                 rgba(255,255,255,.08);
         }
 
-        .hero::after {
 
+        .hero::after {
             content: "";
 
             position: absolute;
@@ -417,35 +342,27 @@
             border-radius: 50%;
 
             border:
-                1px solid
-                rgba(255,255,255,.12);
+                1px solid rgba(255,255,255,.12);
         }
 
 
         .hero-content {
-
             position: relative;
-
             z-index: 3;
         }
 
 
-        /* EYEBROW */
-
         .hero-eyebrow {
-
             display: inline-flex;
-
             align-items: center;
 
             gap: 8px;
 
             padding:
-                7px 11px;
+                6px 10px;
 
             border:
-                1px solid
-                rgba(255,255,255,.16);
+                1px solid rgba(255,255,255,.16);
 
             border-radius: 50px;
 
@@ -459,16 +376,13 @@
 
             font-weight: 800;
 
-            letter-spacing:
-                .13em;
+            letter-spacing: .13em;
 
-            backdrop-filter:
-                blur(10px);
+            backdrop-filter: blur(10px);
         }
 
 
         .hero-dot {
-
             width: 6px;
             height: 6px;
 
@@ -481,8 +395,11 @@
                 rgba(255,255,255,.08);
 
             animation:
-                pulseDot 2s infinite;
+                pulseDot
+                2s
+                infinite;
         }
+
 
         @keyframes pulseDot {
 
@@ -497,40 +414,36 @@
         }
 
 
-        /* HERO TITLE */
-
         .hero-title {
 
-            margin-top: 17px;
+            margin-top: 11px;
 
-            font-size: 28px;
+            font-size: 26px;
 
             line-height: 1.08;
 
             font-weight: 900;
 
-            letter-spacing:
-                -.06em;
+            letter-spacing: -.06em;
         }
+
 
         .hero-text {
 
             max-width: 380px;
 
-            margin-top: 11px;
+            margin-top: 7px;
 
             color:
                 rgba(255,255,255,.73);
 
-            font-size: 11px;
+            font-size: 10px;
 
-            line-height: 1.7;
+            line-height: 1.6;
 
             font-weight: 500;
         }
 
-
-        /* HERO ICON */
 
         .hero-icon {
 
@@ -539,34 +452,34 @@
             z-index: 1;
 
             right: 18px;
-            bottom: -16px;
+            bottom: -18px;
 
             color:
                 rgba(255,255,255,.11);
 
-            font-size: 125px;
+            font-size: 105px;
 
             transform:
                 rotate(-13deg);
 
             animation:
-                compassFloat 5s
+                compassFloat
+                5s
                 ease-in-out
                 infinite;
         }
+
 
         @keyframes compassFloat {
 
             0%,
             100% {
-
                 transform:
                     translateY(0)
                     rotate(-13deg);
             }
 
             50% {
-
                 transform:
                     translateY(-10px)
                     rotate(-7deg);
@@ -574,34 +487,33 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            SEARCH
-        ========================================================== */
+        ========================= */
 
         .search-section {
-
             position: relative;
 
             margin-top: 21px;
 
             animation:
-                fadeUp .6s .12s both;
+                fadeUp
+                .6s
+                .12s
+                both;
         }
+
 
         @keyframes fadeUp {
 
             from {
-
                 opacity: 0;
-
                 transform:
                     translateY(12px);
             }
 
             to {
-
                 opacity: 1;
-
                 transform:
                     translateY(0);
             }
@@ -611,15 +523,13 @@
         .search-box {
 
             width: 100%;
-
             height: 62px;
 
             padding:
                 0 54px;
 
             border:
-                1.5px solid
-                var(--border);
+                1.5px solid var(--border);
 
             border-radius:
                 var(--radius-md);
@@ -629,8 +539,7 @@
             background:
                 rgba(255,255,255,.96);
 
-            color:
-                var(--text);
+            color: var(--text);
 
             font-size: 12px;
 
@@ -645,6 +554,17 @@
                 transform .25s ease;
         }
 
+
+        .search-box::-webkit-search-decoration,
+        .search-box::-webkit-search-cancel-button,
+        .search-box::-webkit-search-results-button,
+        .search-box::-webkit-search-results-decoration {
+
+            -webkit-appearance: none;
+            display: none;
+        }
+
+
         .search-box::placeholder {
 
             color: #AEADB9;
@@ -652,16 +572,15 @@
             font-weight: 500;
         }
 
+
         .search-box:focus {
 
             border-color:
                 var(--primary);
 
             box-shadow:
-
                 0 0 0 4px
                 rgba(109,92,231,.09),
-
                 var(--shadow-md);
 
             transform:
@@ -689,6 +608,7 @@
             transition:
                 transform .25s ease;
         }
+
 
         .search-section:focus-within
         .search-icon {
@@ -734,6 +654,7 @@
                 background .2s ease;
         }
 
+
         .clear-search:hover {
 
             background:
@@ -748,9 +669,9 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            SECTION HEADER
-        ========================================================== */
+        ========================= */
 
         .section-header {
 
@@ -760,12 +681,15 @@
             display: flex;
 
             align-items: center;
-
             justify-content: space-between;
 
             animation:
-                fadeUp .6s .2s both;
+                fadeUp
+                .6s
+                .2s
+                both;
         }
+
 
         .section-title {
 
@@ -776,12 +700,11 @@
 
             font-weight: 900;
 
-            letter-spacing:
-                .09em;
+            letter-spacing: .09em;
 
-            text-transform:
-                uppercase;
+            text-transform: uppercase;
         }
+
 
         .result-count {
 
@@ -802,9 +725,9 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            RESULTS
-        ========================================================== */
+        ========================= */
 
         .results {
 
@@ -816,10 +739,6 @@
         }
 
 
-        /* =========================================================
-           BUS WRAPPER
-        ========================================================== */
-
         .bus-wrapper {
 
             display: flex;
@@ -829,36 +748,30 @@
             gap: 7px;
 
             animation:
-                cardEnter .5s
+                cardEnter
+                .5s
                 cubic-bezier(.2,.8,.2,1)
                 both;
         }
 
+
         @keyframes cardEnter {
 
             from {
-
                 opacity: 0;
-
                 transform:
                     translateY(15px)
                     scale(.985);
             }
 
             to {
-
                 opacity: 1;
-
                 transform:
                     translateY(0)
                     scale(1);
             }
         }
 
-
-        /* =========================================================
-           BUS CARD
-        ========================================================== */
 
         .bus-card {
 
@@ -869,8 +782,7 @@
             padding: 18px;
 
             border:
-                1px solid
-                var(--border);
+                1px solid var(--border);
 
             border-radius:
                 var(--radius-md);
@@ -881,14 +793,14 @@
             box-shadow:
                 var(--shadow-sm);
 
+            cursor: pointer;
+
             transition:
                 transform .28s ease,
                 box-shadow .28s ease,
                 border-color .28s ease;
         }
 
-
-        /* LEFT ACTIVE LINE */
 
         .bus-card::before {
 
@@ -912,48 +824,10 @@
             transform:
                 scaleY(0);
 
-            transform-origin:
-                center;
+            transform-origin: center;
 
             transition:
                 transform .28s ease;
-        }
-
-
-        /* SHINE */
-
-        .bus-card::after {
-
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: -120%;
-
-            width: 70%;
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,.45),
-                    transparent
-                );
-
-            transform:
-                skewX(-20deg);
-
-            pointer-events: none;
-        }
-
-        .bus-card:hover::after {
-
-            left: 150%;
-
-            transition:
-                left .8s ease;
         }
 
 
@@ -969,12 +843,14 @@
                 #DCD8F8;
         }
 
+
         .bus-card:hover::before,
         .bus-card.expanded::before {
 
             transform:
                 scaleY(1);
         }
+
 
         .bus-card.expanded {
 
@@ -986,19 +862,15 @@
         }
 
 
-        /* =========================================================
-           CARD TOP
-        ========================================================== */
-
         .card-top {
 
             display: flex;
 
             align-items: flex-start;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
         }
+
 
         .bus-badge {
 
@@ -1010,18 +882,14 @@
         }
 
 
-        /* BUS NUMBER */
-
         .bus-number {
 
             min-width: 55px;
-
             height: 35px;
 
             display: inline-flex;
 
             align-items: center;
-
             justify-content: center;
 
             padding:
@@ -1050,6 +918,7 @@
                 transform .25s ease;
         }
 
+
         .bus-card:hover
         .bus-number {
 
@@ -1067,17 +936,11 @@
 
             font-weight: 800;
 
-            text-transform:
-                uppercase;
+            text-transform: uppercase;
 
-            letter-spacing:
-                .09em;
+            letter-spacing: .09em;
         }
 
-
-        /* =========================================================
-           EXPAND BUTTON
-        ========================================================== */
 
         .expand-button {
 
@@ -1105,6 +968,7 @@
                 color .3s ease;
         }
 
+
         .expand-button:hover {
 
             background:
@@ -1113,6 +977,7 @@
             color:
                 var(--primary);
         }
+
 
         .bus-card.expanded
         .expand-button {
@@ -1128,9 +993,9 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            ROUTE
-        ========================================================== */
+        ========================= */
 
         .route {
 
@@ -1146,6 +1011,7 @@
             gap: 8px;
         }
 
+
         .route-label {
 
             color:
@@ -1155,12 +1021,11 @@
 
             font-weight: 800;
 
-            text-transform:
-                uppercase;
+            text-transform: uppercase;
 
-            letter-spacing:
-                .11em;
+            letter-spacing: .11em;
         }
+
 
         .route-name {
 
@@ -1175,15 +1040,11 @@
 
             font-weight: 800;
 
-            text-overflow:
-                ellipsis;
+            text-overflow: ellipsis;
 
-            white-space:
-                nowrap;
+            white-space: nowrap;
         }
 
-
-        /* CONNECTOR */
 
         .route-connector {
 
@@ -1194,6 +1055,7 @@
             background:
                 #E3E0F6;
         }
+
 
         .route-connector::before {
 
@@ -1208,17 +1070,16 @@
             height: 7px;
 
             border:
-                2px solid
-                var(--primary);
+                2px solid var(--primary);
 
             border-radius: 50%;
 
-            background:
-                white;
+            background: white;
 
             transform:
                 translateY(-50%);
         }
+
 
         .route-connector::after {
 
@@ -1233,20 +1094,16 @@
             height: 7px;
 
             border-top:
-                2px solid
-                var(--primary);
+                2px solid var(--primary);
 
             border-right:
-                2px solid
-                var(--primary);
+                2px solid var(--primary);
 
             transform:
                 translateY(-50%)
                 rotate(45deg);
         }
 
-
-        /* MOVING DOT */
 
         .route-connector span {
 
@@ -1267,10 +1124,12 @@
                 translateY(-50%);
 
             animation:
-                routeMove 2s
+                routeMove
+                2s
                 linear
                 infinite;
         }
+
 
         @keyframes routeMove {
 
@@ -1284,9 +1143,9 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            CARD INFO
-        ========================================================== */
+        ========================= */
 
         .card-info {
 
@@ -1295,8 +1154,7 @@
             padding-top: 14px;
 
             border-top:
-                1px solid
-                #F0EFF4;
+                1px solid #F0EFF4;
 
             display: grid;
 
@@ -1305,6 +1163,7 @@
 
             gap: 8px;
         }
+
 
         .info {
 
@@ -1316,6 +1175,7 @@
 
             min-width: 0;
         }
+
 
         .info-icon {
 
@@ -1343,12 +1203,14 @@
                 transform .25s ease;
         }
 
+
         .bus-card:hover
         .info-icon {
 
             transform:
                 translateY(-2px);
         }
+
 
         .info-label {
 
@@ -1359,6 +1221,7 @@
 
             font-weight: 600;
         }
+
 
         .info-value {
 
@@ -1371,22 +1234,20 @@
 
             font-weight: 800;
 
-            white-space:
-                nowrap;
+            white-space: nowrap;
         }
 
 
-        /* =========================================================
-           STOPS
-        ========================================================== */
+        /* =========================
+           STOPS CARD
+        ========================= */
 
         .stopping-card {
 
             padding: 19px;
 
             border:
-                1px solid
-                #E3E2EC;
+                1px solid #E3E2EC;
 
             border-radius:
                 var(--radius-md);
@@ -1399,14 +1260,15 @@
                 );
 
             animation:
-                expandDown .35s
+                expandDown
+                .35s
                 cubic-bezier(.2,.8,.2,1);
         }
+
 
         @keyframes expandDown {
 
             from {
-
                 opacity: 0;
 
                 transform:
@@ -1415,7 +1277,6 @@
             }
 
             to {
-
                 opacity: 1;
 
                 transform:
@@ -1431,9 +1292,9 @@
 
             align-items: center;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
         }
+
 
         .stopping-title {
 
@@ -1450,6 +1311,7 @@
 
             font-weight: 800;
         }
+
 
         .stopping-title i {
 
@@ -1470,6 +1332,7 @@
                 var(--primary);
         }
 
+
         .stop-count {
 
             color:
@@ -1481,14 +1344,11 @@
         }
 
 
-        /* =========================================================
-           STOP TIMELINE
-        ========================================================== */
-
         .stops {
 
             margin-top: 18px;
         }
+
 
         .stop {
 
@@ -1504,15 +1364,16 @@
             min-height: 46px;
         }
 
+
         .stop-track {
 
             position: relative;
 
             display: flex;
 
-            justify-content:
-                center;
+            justify-content: center;
         }
+
 
         .stop-track::before {
 
@@ -1526,13 +1387,11 @@
             height: 10px;
 
             border:
-                2px solid
-                var(--primary);
+                2px solid var(--primary);
 
             border-radius: 50%;
 
-            background:
-                white;
+            background: white;
 
             z-index: 2;
 
@@ -1540,12 +1399,14 @@
                 transform .2s ease;
         }
 
+
         .stop:hover
         .stop-track::before {
 
             transform:
                 scale(1.25);
         }
+
 
         .stop:not(:last-child)
         .stop-track::after {
@@ -1563,6 +1424,7 @@
                 #DDD9F5;
         }
 
+
         .stop:first-child
         .stop-track::before {
 
@@ -1574,6 +1436,7 @@
                 rgba(109,92,231,.10);
         }
 
+
         .stop-name {
 
             color:
@@ -1583,6 +1446,7 @@
 
             font-weight: 700;
         }
+
 
         .stop-time {
 
@@ -1595,9 +1459,9 @@
         }
 
 
-        /* =========================================================
-           EMPTY
-        ========================================================== */
+        /* =========================
+           EMPTY STATE
+        ========================= */
 
         .empty {
 
@@ -1607,19 +1471,22 @@
 
             flex-direction: column;
 
-            padding:
-                70px 20px;
+            padding: 70px 20px;
 
             text-align: center;
         }
+
 
         .empty.show {
 
             display: flex;
 
             animation:
-                fadeUp .35s ease;
+                fadeUp
+                .35s
+                ease;
         }
+
 
         .empty-icon {
 
@@ -1642,22 +1509,27 @@
             font-size: 26px;
 
             animation:
-                emptyFloat 3s
+                emptyFloat
+                3s
                 ease-in-out
                 infinite;
         }
+
 
         @keyframes emptyFloat {
 
             0%,
             100% {
-                transform: translateY(0);
+                transform:
+                    translateY(0);
             }
 
             50% {
-                transform: translateY(-6px);
+                transform:
+                    translateY(-6px);
             }
         }
+
 
         .empty-title {
 
@@ -1670,6 +1542,7 @@
 
             font-weight: 900;
         }
+
 
         .empty-text {
 
@@ -1686,9 +1559,9 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            BOTTOM NAV
-        ========================================================== */
+        ========================= */
 
         .bottom-nav {
 
@@ -1703,8 +1576,7 @@
             height: 78px;
 
             border-top:
-                1px solid
-                rgba(228,227,236,.9);
+                1px solid rgba(228,227,236,.9);
 
             background:
                 rgba(255,255,255,.88);
@@ -1718,7 +1590,11 @@
             box-shadow:
                 0 -10px 35px
                 rgba(20,20,40,.035);
+
+            padding-bottom:
+                env(safe-area-inset-bottom);
         }
+
 
         .nav-inner {
 
@@ -1736,6 +1612,7 @@
                 repeat(4,1fr);
         }
 
+
         .nav-item {
 
             position: relative;
@@ -1743,7 +1620,6 @@
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
             flex-direction: column;
@@ -1752,8 +1628,7 @@
 
             border: none;
 
-            background:
-                transparent;
+            background: transparent;
 
             color:
                 #A1A0AE;
@@ -1762,6 +1637,7 @@
                 color .25s ease,
                 transform .2s ease;
         }
+
 
         .nav-item i {
 
@@ -1782,6 +1658,7 @@
                 background .25s ease;
         }
 
+
         .nav-item span {
 
             font-size: 8px;
@@ -1789,11 +1666,13 @@
             font-weight: 800;
         }
 
+
         .nav-item:hover {
 
             color:
                 var(--primary);
         }
+
 
         .nav-item:active {
 
@@ -1801,11 +1680,13 @@
                 scale(.91);
         }
 
+
         .nav-item.active {
 
             color:
                 var(--primary);
         }
+
 
         .nav-item.active i {
 
@@ -1816,8 +1697,6 @@
                 translateY(-2px);
         }
 
-
-        /* ACTIVE LINE */
 
         .nav-item.active::before {
 
@@ -1837,8 +1716,11 @@
                 var(--primary);
 
             animation:
-                navLine .3s ease;
+                navLine
+                .3s
+                ease;
         }
+
 
         @keyframes navLine {
 
@@ -1852,39 +1734,102 @@
         }
 
 
-        /* =========================================================
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast {
+
+            position: fixed;
+
+            left: 50%;
+            bottom: 95px;
+
+            transform:
+                translate(-50%, 20px);
+
+            background:
+                rgba(23,22,38,.95);
+
+            color: white;
+
+            padding:
+                10px 18px;
+
+            border-radius: 30px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            z-index: 2000;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity .25s ease,
+                transform .25s ease;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,.2);
+
+            text-align: center;
+
+            max-width: 90%;
+        }
+
+
+        .toast.show {
+
+            opacity: 1;
+
+            transform:
+                translate(-50%, 0);
+        }
+
+
+        /* =========================
            RESPONSIVE
-        ========================================================== */
+        ========================= */
 
         @media (min-width: 700px) {
 
             .page {
-
                 padding-top: 32px;
             }
 
+            /*
+                Reduced desktop hero height
+            */
             .hero {
 
-                min-height: 240px;
+                min-height: 145px;
 
-                padding: 35px;
+                padding:
+                    24px 30px;
             }
+
 
             .hero-title {
 
-                font-size: 32px;
+                font-size: 30px;
             }
+
 
             .hero-text {
 
-                font-size: 12px;
+                font-size: 11px;
             }
+
 
             .hero-icon {
 
                 right: 45px;
 
-                font-size: 150px;
+                font-size: 125px;
             }
         }
 
@@ -1897,25 +1842,48 @@
                     17px 14px 40px;
             }
 
+
+            /*
+                Main mobile hero height
+                reduced from 195px
+                to 155px
+            */
             .hero {
 
-                min-height: 195px;
+                min-height: 155px;
 
                 padding:
-                    25px 22px;
+                    19px 20px;
             }
+
 
             .hero-title {
 
-                font-size: 24px;
+                font-size: 23px;
+
+                margin-top: 10px;
             }
+
+
+            .hero-text {
+
+                margin-top: 6px;
+
+                font-size: 9px;
+
+                line-height: 1.55;
+            }
+
 
             .hero-icon {
 
                 right: 3px;
 
-                font-size: 95px;
+                bottom: -15px;
+
+                font-size: 85px;
             }
+
 
             .bus-card {
 
@@ -1926,26 +1894,53 @@
 
         @media (max-width: 390px) {
 
+            .hero {
+
+                min-height: 150px;
+
+                padding:
+                    18px 18px;
+            }
+
+
+            .hero-title {
+
+                font-size: 21px;
+            }
+
+
+            .hero-text {
+
+                max-width: 260px;
+
+                font-size: 8.5px;
+            }
+
+
             .route {
 
                 grid-template-columns:
                     1fr 30px 1fr;
             }
 
+
             .route-name {
 
                 font-size: 10px;
             }
+
 
             .card-info {
 
                 gap: 4px;
             }
 
+
             .info {
 
                 gap: 5px;
             }
+
 
             .info-icon {
 
@@ -1955,10 +1950,12 @@
                 font-size: 10px;
             }
 
+
             .info-value {
 
                 font-size: 8px;
             }
+
 
             .bus-type {
 
@@ -1967,9 +1964,9 @@
         }
 
 
-        /* =========================================================
+        /* =========================
            REDUCED MOTION
-        ========================================================== */
+        ========================= */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -1992,15 +1989,16 @@
         }
 
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================================================
-         TOP NAV
-    ========================================================== -->
+    <!-- =========================
+         HEADER
+    ========================= -->
 
     <header class="top-nav">
 
@@ -2023,6 +2021,7 @@
 
         <button
             class="profile"
+            id="profileBtn"
             type="button"
             aria-label="Profile"
         >
@@ -2032,17 +2031,14 @@
     </header>
 
 
-
-    <!-- =========================================================
+    <!-- =========================
          MAIN
-    ========================================================== -->
+    ========================= -->
 
     <main class="page">
 
 
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
+        <!-- HERO -->
 
         <section
             class="hero"
@@ -2055,7 +2051,7 @@
 
                     <span class="hero-dot"></span>
 
-                    BUS INFORMATION
+                    Good Morning 🌞 | EV Sanjeevan
 
                 </div>
 
@@ -2069,8 +2065,10 @@
 
 
                 <p class="hero-text">
+
                     Find bus routes, stops and schedules
                     across the Dharmapuri network.
+
                 </p>
 
             </div>
@@ -2084,10 +2082,9 @@
         </section>
 
 
-
-        <!-- =====================================================
+        <!-- =========================
              SEARCH
-        ====================================================== -->
+        ========================= -->
 
         <section
             class="search-section"
@@ -2103,7 +2100,7 @@
             <input
                 id="searchInput"
                 class="search-box"
-                type="search"
+                type="text"
                 placeholder="Search bus number, city or stop..."
                 maxlength="50"
                 autocomplete="off"
@@ -2129,10 +2126,9 @@
         </section>
 
 
-
-        <!-- =====================================================
+        <!-- =========================
              SECTION HEADER
-        ====================================================== -->
+        ========================= -->
 
         <div class="section-header">
 
@@ -2154,10 +2150,7 @@
         </div>
 
 
-
-        <!-- =====================================================
-             RESULTS
-        ====================================================== -->
+        <!-- RESULTS -->
 
         <section
             id="results"
@@ -2166,10 +2159,7 @@
         ></section>
 
 
-
-        <!-- =====================================================
-             EMPTY STATE
-        ====================================================== -->
+        <!-- EMPTY -->
 
         <section
             id="empty"
@@ -2193,8 +2183,10 @@
 
 
             <p class="empty-text">
-                Try another bus number, city or
-                bus stop.
+
+                Try another bus number,
+                city or bus stop.
+
             </p>
 
         </section>
@@ -2202,10 +2194,9 @@
     </main>
 
 
-
-    <!-- =========================================================
+    <!-- =========================
          BOTTOM NAV
-    ========================================================== -->
+    ========================= -->
 
     <nav
         class="bottom-nav"
@@ -2218,7 +2209,7 @@
             <button
                 class="nav-item"
                 type="button"
-                onclick="location.href='index.html'"
+                data-target="home"
             >
 
                 <i
@@ -2233,11 +2224,11 @@
             </button>
 
 
-
             <button
                 class="nav-item active"
                 type="button"
                 aria-current="page"
+                data-target="explore"
             >
 
                 <i
@@ -2252,30 +2243,28 @@
             </button>
 
 
-
             <button
                 class="nav-item"
                 type="button"
-                onclick="location.href='saved.html'"
+                data-target="upload"
             >
 
                 <i
-                    class="bi bi-bookmark"
+                    class="bi bi-cloud-arrow-up"
                     aria-hidden="true"
                 ></i>
 
                 <span>
-                    Saved
+                    Upload
                 </span>
 
             </button>
 
 
-
             <button
                 class="nav-item"
                 type="button"
-                onclick="location.href='account.html'"
+                data-target="account"
             >
 
                 <i
@@ -2294,19 +2283,27 @@
     </nav>
 
 
+    <!-- TOAST -->
 
-    <!-- =========================================================
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+    ></div>
+
+
+    <!-- =========================
          JAVASCRIPT
-    ========================================================== -->
+    ========================= -->
 
     <script>
 
         "use strict";
 
 
-        /* =========================================================
+        /* =========================
            BUS DATA
-        ========================================================== */
+        ========================= */
 
         const buses = Object.freeze([
 
@@ -2487,54 +2484,146 @@
         ]);
 
 
-
-        /* =========================================================
-           ELEMENTS
-        ========================================================== */
+        /* =========================
+           DOM
+        ========================= */
 
         const searchInput =
-            document.getElementById(
-                "searchInput"
-            );
-
+            document.getElementById("searchInput");
 
         const clearSearch =
-            document.getElementById(
-                "clearSearch"
-            );
-
+            document.getElementById("clearSearch");
 
         const results =
-            document.getElementById(
-                "results"
-            );
-
+            document.getElementById("results");
 
         const empty =
-            document.getElementById(
-                "empty"
-            );
-
+            document.getElementById("empty");
 
         const sectionTitle =
-            document.getElementById(
-                "sectionTitle"
-            );
-
+            document.getElementById("sectionTitle");
 
         const resultCount =
-            document.getElementById(
-                "resultCount"
-            );
+            document.getElementById("resultCount");
+
+        const toast =
+            document.getElementById("toast");
+
+        const profileBtn =
+            document.getElementById("profileBtn");
 
 
-        let expandedBusId = null;
+        /* =========================
+           TOAST
+        ========================= */
+
+        function showToast(message) {
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+            setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 2200);
+        }
 
 
+        /* =========================
+           DEBOUNCE
+        ========================= */
 
-        /* =========================================================
+        function debounce(callback, delay) {
+
+            let timer;
+
+            return function (...args) {
+
+                clearTimeout(timer);
+
+                timer = setTimeout(
+                    () => callback.apply(this, args),
+                    delay
+                );
+            };
+        }
+
+
+        /* =========================
+           FILTER
+        ========================= */
+
+        function filterBuses(query) {
+
+            const cleanQuery =
+                query.trim().toLowerCase();
+
+
+            if (!cleanQuery) {
+
+                return buses.slice(0, 3);
+            }
+
+
+            const ignoredWords = [
+                "to",
+                "from",
+                "via",
+                "-",
+                "–"
+            ];
+
+
+            const terms =
+                cleanQuery
+                    .split(/\s+/)
+                    .filter(
+                        term =>
+                            Boolean(term) &&
+                            !ignoredWords.includes(term)
+                    );
+
+
+            return buses.filter(bus => {
+
+                const stopNames =
+                    bus.stops
+                        .map(stop => stop.name)
+                        .join(" ");
+
+
+                const searchable = [
+
+                    bus.bus,
+
+                    bus.type,
+
+                    bus.start,
+
+                    bus.dest,
+
+                    stopNames
+
+                ]
+                .join(" ")
+                .toLowerCase();
+
+
+                return terms.every(
+                    term =>
+                        searchable.includes(term)
+                );
+
+            });
+
+        }
+
+
+        /* =========================
            CREATE ELEMENT
-        ========================================================== */
+        ========================= */
 
         function createElement(
             tag,
@@ -2567,112 +2656,15 @@
         }
 
 
-
-        /* =========================================================
-           DEBOUNCE
-        ========================================================== */
-
-        function debounce(
-            callback,
-            delay
-        ) {
-
-            let timer;
-
-
-            return function (...args) {
-
-                clearTimeout(timer);
-
-
-                timer = setTimeout(
-                    () => {
-
-                        callback.apply(
-                            this,
-                            args
-                        );
-
-                    },
-                    delay
-                );
-
-            };
-        }
-
-
-
-        /* =========================================================
-           FILTER
-        ========================================================== */
-
-        function filterBuses(query) {
-
-            const cleanQuery =
-                query
-                    .trim()
-                    .toLowerCase();
-
-
-            if (!cleanQuery) {
-
-                return buses.slice(0, 3);
-            }
-
-
-            const terms =
-                cleanQuery
-                    .split(/\s+/)
-                    .filter(Boolean);
-
-
-            return buses.filter(bus => {
-
-                const stopNames =
-                    bus.stops
-                        .map(stop => stop.name)
-                        .join(" ");
-
-
-                const searchable = [
-
-                    bus.bus,
-
-                    bus.type,
-
-                    bus.start,
-
-                    bus.dest,
-
-                    stopNames
-
-                ]
-                    .join(" ")
-                    .toLowerCase();
-
-
-                return terms.every(
-                    term =>
-                        searchable.includes(term)
-                );
-
-            });
-
-        }
-
-
-
-        /* =========================================================
-           RENDER RESULTS
-        ========================================================== */
+        /* =========================
+           RENDER
+        ========================= */
 
         function renderResults(query) {
 
             results.replaceChildren();
 
-            empty.classList.remove(
-                "show"
-            );
+            empty.classList.remove("show");
 
 
             const filtered =
@@ -2699,9 +2691,7 @@
 
             if (!filtered.length) {
 
-                empty.classList.add(
-                    "show"
-                );
+                empty.classList.add("show");
 
                 return;
             }
@@ -2716,21 +2706,16 @@
                             index
                         );
 
-
-                    results.appendChild(
-                        card
-                    );
+                    results.appendChild(card);
 
                 }
             );
-
         }
 
 
-
-        /* =========================================================
+        /* =========================
            BUS CARD
-        ========================================================== */
+        ========================= */
 
         function createBusCard(
             bus,
@@ -2745,7 +2730,7 @@
 
 
             wrapper.style.animationDelay =
-                `${index * 65}ms`;
+                `${index * 60}ms`;
 
 
             const card =
@@ -2753,18 +2738,6 @@
                     "div",
                     "bus-card"
                 );
-
-
-            const expanded =
-                expandedBusId === bus.id;
-
-
-            if (expanded) {
-
-                card.classList.add(
-                    "expanded"
-                );
-            }
 
 
             card.setAttribute(
@@ -2781,13 +2754,11 @@
 
             card.setAttribute(
                 "aria-expanded",
-                String(expanded)
+                "false"
             );
 
 
-            /* =====================================================
-               TOP
-            ====================================================== */
+            /* TOP */
 
             const top =
                 createElement(
@@ -2829,9 +2800,7 @@
 
 
             const chevron =
-                document.createElement(
-                    "i"
-                );
+                document.createElement("i");
 
 
             chevron.className =
@@ -2855,10 +2824,7 @@
             );
 
 
-
-            /* =====================================================
-               ROUTE
-            ====================================================== */
+            /* ROUTE */
 
             const route =
                 createElement(
@@ -2871,21 +2837,20 @@
                 createElement("div");
 
 
-            from.appendChild(
+            from.append(
+
                 createElement(
                     "div",
                     "route-label",
                     "From"
-                )
-            );
+                ),
 
-
-            from.appendChild(
                 createElement(
                     "div",
                     "route-name",
                     bus.start
                 )
+
             );
 
 
@@ -2896,14 +2861,8 @@
                 );
 
 
-            const movingDot =
-                createElement(
-                    "span"
-                );
-
-
             connector.appendChild(
-                movingDot
+                createElement("span")
             );
 
 
@@ -2911,21 +2870,20 @@
                 createElement("div");
 
 
-            to.appendChild(
+            to.append(
+
                 createElement(
                     "div",
                     "route-label",
                     "To"
-                )
-            );
+                ),
 
-
-            to.appendChild(
                 createElement(
                     "div",
                     "route-name",
                     bus.dest
                 )
+
             );
 
 
@@ -2936,10 +2894,7 @@
             );
 
 
-
-            /* =====================================================
-               INFO
-            ====================================================== */
+            /* INFO */
 
             const info =
                 createElement(
@@ -2978,29 +2933,55 @@
             );
 
 
-
-            /* =====================================================
-               TOGGLE
-            ====================================================== */
-
-            function toggleCard() {
-
-                expandedBusId =
-                    expandedBusId === bus.id
-                        ? null
-                        : bus.id;
+            wrapper.appendChild(card);
 
 
-                renderResults(
-                    searchInput.value
+            /* TOGGLE */
+
+            function toggle() {
+
+                const isExpanded =
+                    card.classList.toggle(
+                        "expanded"
+                    );
+
+
+                card.setAttribute(
+                    "aria-expanded",
+                    String(isExpanded)
                 );
 
+
+                const existingStops =
+                    wrapper.querySelector(
+                        ".stopping-card"
+                    );
+
+
+                if (isExpanded) {
+
+                    if (!existingStops) {
+
+                        wrapper.appendChild(
+                            createStoppingCard(
+                                bus.stops
+                            )
+                        );
+                    }
+
+                } else {
+
+                    if (existingStops) {
+
+                        existingStops.remove();
+                    }
+                }
             }
 
 
             card.addEventListener(
                 "click",
-                toggleCard
+                toggle
             );
 
 
@@ -3015,39 +2996,19 @@
 
                         event.preventDefault();
 
-                        toggleCard();
+                        toggle();
                     }
-
                 }
             );
-
-
-            wrapper.appendChild(
-                card
-            );
-
-
-            if (expanded) {
-
-                wrapper.appendChild(
-
-                    createStoppingCard(
-                        bus.stops
-                    )
-
-                );
-
-            }
 
 
             return wrapper;
         }
 
 
-
-        /* =========================================================
+        /* =========================
            INFO BUILDER
-        ========================================================== */
+        ========================= */
 
         function buildInfo(
             icon,
@@ -3070,9 +3031,7 @@
 
 
             const iconElement =
-                document.createElement(
-                    "i"
-                );
+                document.createElement("i");
 
 
             iconElement.className =
@@ -3121,14 +3080,11 @@
         }
 
 
+        /* =========================
+           STOPS CARD
+        ========================= */
 
-        /* =========================================================
-           STOPPING CARD
-        ========================================================== */
-
-        function createStoppingCard(
-            stops
-        ) {
+        function createStoppingCard(stops) {
 
             const card =
                 createElement(
@@ -3152,9 +3108,7 @@
 
 
             const icon =
-                document.createElement(
-                    "i"
-                );
+                document.createElement("i");
 
 
             icon.className =
@@ -3168,11 +3122,13 @@
 
 
             title.append(
+
                 icon,
 
                 document.createTextNode(
                     "Bus Stops"
                 )
+
             );
 
 
@@ -3253,36 +3209,28 @@
         }
 
 
-
-        /* =========================================================
-           SEARCH
-        ========================================================== */
+        /* =========================
+           SEARCH HANDLER
+        ========================= */
 
         const handleSearch =
-            debounce(
-                function () {
+            debounce(function () {
 
-                    const hasText =
-                        searchInput.value.length > 0;
-
-
-                    clearSearch.style.display =
-                        hasText
-                            ? "flex"
-                            : "none";
+                const hasText =
+                    searchInput.value.length > 0;
 
 
-                    expandedBusId =
-                        null;
+                clearSearch.style.display =
+                    hasText
+                        ? "flex"
+                        : "none";
 
 
-                    renderResults(
-                        searchInput.value
-                    );
+                renderResults(
+                    searchInput.value
+                );
 
-                },
-                120
-            );
+            }, 120);
 
 
         searchInput.addEventListener(
@@ -3291,10 +3239,9 @@
         );
 
 
-
-        /* =========================================================
+        /* =========================
            CLEAR SEARCH
-        ========================================================== */
+        ========================= */
 
         clearSearch.addEventListener(
             "click",
@@ -3305,9 +3252,6 @@
                 clearSearch.style.display =
                     "none";
 
-                expandedBusId =
-                    null;
-
                 renderResults("");
 
                 searchInput.focus();
@@ -3316,14 +3260,88 @@
         );
 
 
+        /* =========================
+           PROFILE
+        ========================= */
 
-        /* =========================================================
-           INITIAL LOAD
-        ========================================================== */
+        profileBtn.addEventListener(
+            "click",
+            () => {
+
+                showToast(
+                    "Account settings coming soon."
+                );
+
+            }
+        );
+
+
+        /* =========================
+           BOTTOM NAV
+        ========================= */
+
+        document
+            .querySelectorAll(
+                ".bottom-nav .nav-item"
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const target =
+                            button.dataset.target;
+
+
+                        if (
+                            target === "explore"
+                        ) {
+
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+
+                        }
+
+                        else if (
+                            target === "home"
+                        ) {
+
+                            window.location.href =
+                                "index.html";
+
+                        }
+
+                        else {
+
+                            showToast(
+                                `${
+                                    target
+                                        .charAt(0)
+                                        .toUpperCase()
+                                    +
+                                    target.slice(1)
+                                } page will be available soon.`
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        /* =========================
+           INITIAL RENDER
+        ========================= */
 
         renderResults("");
 
     </script>
 
 </body>
+
 </html>
