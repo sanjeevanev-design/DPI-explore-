@@ -12,23 +12,36 @@
 
     <meta
         name="description"
-        content="DPI One — Explore bus routes, stops and schedules."
+        content="DPI One — Explore bus routes, stops and schedules across Dharmapuri."
     >
 
     <meta
         name="theme-color"
-        content="#6957E8"
+        content="#6D5CE7"
+    >
+
+    <meta
+        name="color-scheme"
+        content="light"
     >
 
     <title>DPI One — Explore</title>
 
-    <!-- Bootstrap Icons -->
+
+    <!-- =========================================================
+         ICONS
+    ========================================================= -->
+
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     >
 
-    <!-- Montserrat Font -->
+
+    <!-- =========================================================
+         FONT
+    ========================================================= -->
+
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -45,531 +58,733 @@
         rel="stylesheet"
     >
 
+
     <style>
 
+        /* =========================================================
+           DESIGN TOKENS
+        ========================================================= */
+
         :root {
+
             --primary: #6D5CE7;
             --primary-dark: #5645D2;
-            --primary-deep: #4435B8;
-            --primary-light: #F0EEFF;
+            --primary-light: #F1EFFC;
 
-            --text: #171626;
-            --text-secondary: #555469;
-            --muted: #9291A3;
+            --text: #17162A;
+            --text-secondary: #5B5A6E;
+            --muted: #9997A8;
 
-            --background: #F7F7FB;
+            --background: #FBFBFD;
             --surface: #FFFFFF;
-            --surface-soft: #FAFAFD;
 
-            --border: #E9E8F0;
+            --border: #EAE9F1;
 
-            --success: #20C997;
-            --danger: #EF5350;
+            --success: #248A5B;
+            --success-bg: #EDF8F2;
 
-            --radius-xl: 28px;
-            --radius-lg: 22px;
-            --radius-md: 17px;
-            --radius-sm: 12px;
+            --government: #3159C9;
+            --government-bg: #EEF2FF;
 
-            --shadow-sm: 0 6px 24px rgba(27, 24, 56, 0.045);
-            --shadow-md: 0 16px 40px rgba(27, 24, 56, 0.08);
-            --shadow-lg: 0 25px 65px rgba(27, 24, 56, 0.12);
-            --shadow-primary: 0 20px 50px rgba(109, 92, 231, 0.27);
+            --private: #8B5A20;
+            --private-bg: #FFF5E8;
+
+            --danger: #C94343;
+            --danger-bg: #FFF0F0;
+
+            --radius-xl: 24px;
+            --radius-lg: 18px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+
+            --shadow-sm:
+                0 4px 16px rgba(24, 20, 60, .045);
+
+            --shadow-md:
+                0 12px 32px rgba(24, 20, 60, .075);
+
+            --nav-height: 74px;
+
+            --page-gutter:
+                clamp(14px, 2.5vw, 32px);
+
+            --content-width:
+                1180px;
+
+            --content-bottom-space:
+                calc(
+                    var(--nav-height)
+                    + env(safe-area-inset-bottom)
+                    + 28px
+                );
         }
 
 
-        * {
-            margin: 0;
-            padding: 0;
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
 
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
 
         body {
+
             min-height: 100vh;
-            padding-bottom: 110px;
+
+            margin: 0;
+
+            padding:
+                0
+                0
+                var(--content-bottom-space);
 
             background:
-                radial-gradient(
-                    circle at 50% -15%,
-                    #EAE7FF 0,
-                    #F7F7FB 35%,
-                    #F7F7FB 100%
-                );
+                var(--background);
 
-            color: var(--text);
+            color:
+                var(--text);
 
-            font-family: "Montserrat", sans-serif;
+            font-family:
+                "Montserrat",
+                sans-serif;
 
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing:
+                antialiased;
 
-            overflow-x: hidden;
+            text-rendering:
+                optimizeLegibility;
+
+            overflow-x:
+                hidden;
         }
 
 
         button,
         input {
-            font: inherit;
-            -webkit-tap-highlight-color: transparent;
+            font:
+                inherit;
         }
 
 
         button {
-            cursor: pointer;
+            cursor:
+                pointer;
+        }
+
+
+        button,
+        input {
+            -webkit-tap-highlight-color:
+                transparent;
+        }
+
+
+        img,
+        svg {
+            max-width:
+                100%;
+        }
+
+
+        img {
+            height:
+                auto;
+        }
+
+
+        a {
+            color:
+                inherit;
         }
 
 
         :focus-visible {
-            outline: 3px solid rgba(109, 92, 231, 0.25);
-            outline-offset: 3px;
+
+            outline:
+                3px solid
+                rgba(109, 92, 231, .28);
+
+            outline-offset:
+                3px;
         }
 
 
-        /* =========================
+        /* =========================================================
            TOP NAV
-        ========================= */
+        ========================================================= */
 
         .top-nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
 
-            height: 70px;
+            position:
+                sticky;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            top:
+                0;
 
-            padding: 0 22px;
+            z-index:
+                1000;
 
-            background: rgba(255,255,255,0.82);
+            min-height:
+                64px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            padding:
+                10px
+                var(--page-gutter);
+
+            background:
+                rgba(255,255,255,.94);
 
             border-bottom:
-                1px solid rgba(230,229,238,0.8);
+                1px solid var(--border);
 
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
+            backdrop-filter:
+                blur(16px);
+
+            -webkit-backdrop-filter:
+                blur(16px);
         }
 
 
         .logo {
-            display: flex;
-            align-items: center;
 
-            text-decoration: none;
+            min-width:
+                0;
 
-            letter-spacing: -0.07em;
+            display:
+                inline-flex;
 
-            font-size: 24px;
+            align-items:
+                center;
+
+            text-decoration:
+                none;
+
+            line-height:
+                1;
         }
 
 
-        .logo-main {
-            color: var(--primary);
-            font-weight: 900;
+        .logo img {
+
+            display:
+                block;
+
+            width:
+                auto;
+
+            height:
+                clamp(28px, 2.2vw, 34px);
+
+            max-width:
+                160px;
+
+            object-fit:
+                contain;
         }
 
-
-        .logo-light {
-            color: var(--text);
-            font-weight: 400;
-        }
-
-
-        /* =========================
-           PROFILE
-        ========================= */
 
         .profile {
-            position: relative;
 
-            width: 40px;
-            height: 40px;
+            width:
+                clamp(36px, 3vw, 40px);
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height:
+                clamp(36px, 3vw, 40px);
 
-            border: none;
-            border-radius: 50%;
+            flex-shrink:
+                0;
 
-            color: white;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border:
+                0;
+
+            border-radius:
+                50%;
+
+            color:
+                #fff;
 
             background:
-                linear-gradient(
-                    145deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
+                var(--primary);
 
-            font-size: 11px;
-            font-weight: 900;
+            font-size:
+                11px;
 
-            box-shadow:
-                0 8px 22px rgba(109,92,231,0.28);
+            font-weight:
+                800;
 
             transition:
-                transform .25s ease,
-                box-shadow .25s ease;
+                background .2s ease,
+                transform .2s ease;
         }
 
 
         .profile:hover {
-            transform:
-                translateY(-2px)
-                scale(1.03);
 
-            box-shadow:
-                0 13px 28px rgba(109,92,231,0.34);
+            background:
+                var(--primary-dark);
+
+            transform:
+                translateY(-1px);
         }
 
 
-        /* =========================
+        /* =========================================================
            PAGE
-        ========================= */
+        ========================================================= */
 
         .page {
-            width: 100%;
-            max-width: 760px;
 
-            margin: auto;
+            width:
+                min(
+                    calc(100% - (var(--page-gutter) * 2)),
+                    var(--content-width)
+                );
+
+            margin:
+                0 auto;
 
             padding:
-                24px 17px 45px;
+                clamp(20px, 3vw, 36px)
+                0
+                34px;
         }
 
 
-        /* =========================
+        /* =========================================================
            HERO
-           HEIGHT REDUCED
-        ========================= */
+        ========================================================= */
 
         .hero {
-            position: relative;
 
-            /*
-                Reduced from 170px
-                to 145px
-            */
-            min-height: 145px;
+            position:
+                relative;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            /*
-                Reduced vertical padding
-            */
-            padding: 22px 27px;
+            padding:
+                clamp(20px, 3vw, 34px);
 
-            border-radius: var(--radius-xl);
+            border-radius:
+                var(--radius-xl);
 
-            color: white;
+            color:
+                #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8274F2 0%,
+                    #6D5CE7 45%,
+                    #5645D2 100%
+                );
+
+            box-shadow:
+                0 2px 8px
+                rgba(23,18,56,.18),
+
+                0 22px 42px
+                rgba(86,69,210,.28);
+
+            animation:
+                heroEnter .45s ease both;
+        }
+
+
+        .hero::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            z-index:
+                0;
+
+            opacity:
+                .05;
+
+            mix-blend-mode:
+                overlay;
+
+            pointer-events:
+                none;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+
+        .hero::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                clamp(180px, 25vw, 300px);
+
+            height:
+                clamp(180px, 25vw, 300px);
+
+            right:
+                clamp(-100px, -5vw, -40px);
+
+            top:
+                clamp(-120px, -7vw, -50px);
+
+            z-index:
+                0;
+
+            border-radius:
+                50%;
 
             background:
                 radial-gradient(
-                    circle at 85% 15%,
-                    rgba(255,255,255,.16),
-                    transparent 25%
-                ),
-
-                linear-gradient(
-                    135deg,
-                    #8174EF 0%,
-                    #6D5CE7 48%,
-                    #5140C6 100%
+                    circle,
+                    rgba(255,255,255,.16) 0%,
+                    rgba(255,255,255,0) 70%
                 );
 
-            box-shadow: var(--shadow-primary);
+            pointer-events:
+                none;
+        }
 
-            animation:
-                heroEnter
-                .7s
-                cubic-bezier(.2,.8,.2,1);
+
+        .hero-route-motif {
+
+            position:
+                absolute;
+
+            right:
+                clamp(-10px, 1vw, 30px);
+
+            bottom:
+                clamp(-20px, -1vw, 0px);
+
+            z-index:
+                0;
+
+            width:
+                clamp(150px, 20vw, 280px);
+
+            opacity:
+                .16;
+
+            pointer-events:
+                none;
+        }
+
+
+        .hero-top {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                14px;
+        }
+
+
+        .hero-logo {
+
+            display:
+                block;
+
+            width:
+                auto;
+
+            height:
+                clamp(21px, 2vw, 28px);
+
+            max-width:
+                120px;
+
+            object-fit:
+                contain;
+        }
+
+
+        .hero-eyebrow {
+
+            max-width:
+                100%;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+
+            padding:
+                6px 11px;
+
+            border-radius:
+                999px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.22);
+
+            background:
+                rgba(255,255,255,.12);
+
+            backdrop-filter:
+                blur(10px);
+
+            -webkit-backdrop-filter:
+                blur(10px);
+
+            color:
+                rgba(255,255,255,.92);
+
+            font-size:
+                clamp(8px, .8vw, 11px);
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .035em;
+
+            white-space:
+                normal;
+        }
+
+
+        .hero-eyebrow i {
+            font-size:
+                9px;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .hero-title {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            max-width:
+                700px;
+
+            margin:
+                0;
+
+            color:
+                #fff;
+
+            font-size:
+                clamp(21px, 2.3vw, 34px);
+
+            line-height:
+                1.15;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                -.04em;
+        }
+
+
+        .hero-text {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            max-width:
+                600px;
+
+            margin:
+                8px 0 0;
+
+            color:
+                rgba(255,255,255,.84);
+
+            font-size:
+                clamp(12px, 1vw, 15px);
+
+            line-height:
+                1.55;
+
+            font-weight:
+                500;
         }
 
 
         @keyframes heroEnter {
 
             from {
-                opacity: 0;
+                opacity:
+                    0;
+
                 transform:
-                    translateY(20px)
-                    scale(.97);
+                    translateY(8px);
             }
 
             to {
-                opacity: 1;
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
+                opacity:
+                    1;
 
-
-        .hero::before {
-            content: "";
-
-            position: absolute;
-
-            width: 230px;
-            height: 230px;
-
-            right: -100px;
-            top: -110px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.08);
-        }
-
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-
-            width: 160px;
-            height: 160px;
-
-            right: 65px;
-            bottom: -115px;
-
-            border-radius: 50%;
-
-            border:
-                1px solid rgba(255,255,255,.12);
-        }
-
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-        }
-
-
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-
-            gap: 8px;
-
-            padding:
-                6px 10px;
-
-            border:
-                1px solid rgba(255,255,255,.16);
-
-            border-radius: 50px;
-
-            background:
-                rgba(255,255,255,.10);
-
-            color:
-                rgba(255,255,255,.78);
-
-            font-size: 9px;
-
-            font-weight: 800;
-
-            letter-spacing: .13em;
-
-            backdrop-filter: blur(10px);
-        }
-
-
-        .hero-dot {
-            width: 6px;
-            height: 6px;
-
-            border-radius: 50%;
-
-            background: white;
-
-            box-shadow:
-                0 0 0 4px
-                rgba(255,255,255,.08);
-
-            animation:
-                pulseDot
-                2s
-                infinite;
-        }
-
-
-        @keyframes pulseDot {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.35);
-            }
-        }
-
-
-        .hero-title {
-
-            margin-top: 11px;
-
-            font-size: 26px;
-
-            line-height: 1.08;
-
-            font-weight: 900;
-
-            letter-spacing: -.06em;
-        }
-
-
-        .hero-text {
-
-            max-width: 380px;
-
-            margin-top: 7px;
-
-            color:
-                rgba(255,255,255,.73);
-
-            font-size: 10px;
-
-            line-height: 1.6;
-
-            font-weight: 500;
-        }
-
-
-        .hero-icon {
-
-            position: absolute;
-
-            z-index: 1;
-
-            right: 18px;
-            bottom: -18px;
-
-            color:
-                rgba(255,255,255,.11);
-
-            font-size: 105px;
-
-            transform:
-                rotate(-13deg);
-
-            animation:
-                compassFloat
-                5s
-                ease-in-out
-                infinite;
-        }
-
-
-        @keyframes compassFloat {
-
-            0%,
-            100% {
-                transform:
-                    translateY(0)
-                    rotate(-13deg);
-            }
-
-            50% {
-                transform:
-                    translateY(-10px)
-                    rotate(-7deg);
-            }
-        }
-
-
-        /* =========================
-           SEARCH
-        ========================= */
-
-        .search-section {
-            position: relative;
-
-            margin-top: 21px;
-
-            animation:
-                fadeUp
-                .6s
-                .12s
-                both;
-        }
-
-
-        @keyframes fadeUp {
-
-            from {
-                opacity: 0;
-                transform:
-                    translateY(12px);
-            }
-
-            to {
-                opacity: 1;
                 transform:
                     translateY(0);
             }
         }
 
 
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        .search-section {
+
+            position:
+                relative;
+
+            margin-top:
+                clamp(16px, 2vw, 22px);
+        }
+
+
+        .search-icon {
+
+            position:
+                absolute;
+
+            left:
+                18px;
+
+            top:
+                50%;
+
+            z-index:
+                2;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                var(--primary);
+
+            font-size:
+                16px;
+
+            pointer-events:
+                none;
+        }
+
+
         .search-box {
 
-            width: 100%;
-            height: 62px;
+            width:
+                100%;
+
+            min-height:
+                54px;
+
+            height:
+                clamp(52px, 4vw, 60px);
 
             padding:
-                0 54px;
+                0 50px;
 
             border:
-                1.5px solid var(--border);
+                1px solid var(--border);
 
             border-radius:
                 var(--radius-md);
 
-            outline: none;
+            outline:
+                none;
 
             background:
-                rgba(255,255,255,.96);
+                var(--surface);
 
-            color: var(--text);
+            color:
+                var(--text);
 
-            font-size: 12px;
+            font-size:
+                clamp(12px, 1vw, 14px);
 
-            font-weight: 600;
+            font-weight:
+                600;
 
             box-shadow:
                 var(--shadow-sm);
 
             transition:
-                border-color .25s ease,
-                box-shadow .25s ease,
-                transform .25s ease;
-        }
-
-
-        .search-box::-webkit-search-decoration,
-        .search-box::-webkit-search-cancel-button,
-        .search-box::-webkit-search-results-button,
-        .search-box::-webkit-search-results-decoration {
-
-            -webkit-appearance: none;
-            display: none;
+                border-color .2s ease,
+                box-shadow .2s ease;
         }
 
 
         .search-box::placeholder {
 
-            color: #AEADB9;
+            color:
+                var(--muted);
 
-            font-weight: 500;
+            font-weight:
+                500;
         }
 
 
@@ -579,83 +794,45 @@
                 var(--primary);
 
             box-shadow:
-                0 0 0 4px
-                rgba(109,92,231,.09),
-                var(--shadow-md);
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        .search-icon {
-
-            position: absolute;
-
-            left: 19px;
-            top: 50%;
-
-            transform:
-                translateY(-50%);
-
-            color:
-                var(--primary);
-
-            font-size: 18px;
-
-            pointer-events: none;
-
-            transition:
-                transform .25s ease;
-        }
-
-
-        .search-section:focus-within
-        .search-icon {
-
-            transform:
-                translateY(-50%)
-                scale(1.08);
+                0 4px 18px
+                rgba(109,92,231,.08);
         }
 
 
         .clear-search {
 
-            position: absolute;
+            position:
+                absolute;
 
-            right: 16px;
-            top: 50%;
+            right:
+                12px;
 
-            width: 30px;
-            height: 30px;
+            top:
+                50%;
 
-            display: none;
+            width:
+                32px;
 
-            align-items: center;
-            justify-content: center;
+            height:
+                32px;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
 
             transform:
                 translateY(-50%);
 
-            border: none;
+            border:
+                0;
 
-            border-radius: 50%;
-
-            background:
-                #F1F1F5;
-
-            color:
-                #858492;
-
-            font-size: 12px;
-
-            transition:
-                transform .2s ease,
-                background .2s ease;
-        }
-
-
-        .clear-search:hover {
+            border-radius:
+                50%;
 
             background:
                 var(--primary-light);
@@ -663,31 +840,42 @@
             color:
                 var(--primary);
 
-            transform:
-                translateY(-50%)
-                rotate(90deg);
+            font-size:
+                11px;
         }
 
 
-        /* =========================
+        .clear-search.visible {
+            display:
+                flex;
+        }
+
+
+        /* =========================================================
            SECTION HEADER
-        ========================= */
+        ========================================================= */
 
         .section-header {
 
             margin:
-                30px 3px 13px;
+                clamp(24px, 3vw, 32px)
+                2px
+                12px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
-            justify-content: space-between;
+            align-items:
+                center;
 
-            animation:
-                fadeUp
-                .6s
-                .2s
-                both;
+            justify-content:
+                space-between;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px 12px;
         }
 
 
@@ -696,276 +884,357 @@
             color:
                 var(--text-secondary);
 
-            font-size: 11px;
+            font-size:
+                clamp(10px, .8vw, 12px);
 
-            font-weight: 900;
+            font-weight:
+                800;
 
-            letter-spacing: .09em;
+            letter-spacing:
+                .06em;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
         }
 
 
         .result-count {
 
-            padding:
-                6px 10px;
-
-            border-radius: 50px;
-
-            background:
-                var(--primary-light);
-
             color:
-                var(--primary);
+                var(--muted);
 
-            font-size: 9px;
+            font-size:
+                clamp(9px, .7vw, 11px);
 
-            font-weight: 800;
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
         }
 
 
-        /* =========================
+        /* =========================================================
            RESULTS
-        ========================= */
+        ========================================================= */
 
         .results {
 
-            display: flex;
+            display:
+                grid;
 
-            flex-direction: column;
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
 
-            gap: 12px;
+            align-items:
+                start;
+
+            gap:
+                clamp(12px, 1.5vw, 18px);
         }
 
 
         .bus-wrapper {
 
-            display: flex;
+            min-width:
+                0;
 
-            flex-direction: column;
+            display:
+                flex;
 
-            gap: 7px;
+            flex-direction:
+                column;
+
+            margin-bottom:
+                0;
 
             animation:
-                cardEnter
-                .5s
-                cubic-bezier(.2,.8,.2,1)
-                both;
+                cardEnter .3s ease both;
         }
 
 
         @keyframes cardEnter {
 
             from {
-                opacity: 0;
+
+                opacity:
+                    0;
+
                 transform:
-                    translateY(15px)
-                    scale(.985);
+                    translateY(7px);
             }
 
             to {
-                opacity: 1;
+
+                opacity:
+                    1;
+
                 transform:
-                    translateY(0)
-                    scale(1);
+                    translateY(0);
             }
         }
 
 
+        /* =========================================================
+           BUS CARD
+        ========================================================= */
+
         .bus-card {
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            min-width:
+                0;
 
-            padding: 18px;
+            padding:
+                clamp(14px, 1.5vw, 20px);
 
             border:
                 1px solid var(--border);
 
             border-radius:
-                var(--radius-md);
+                var(--radius-lg);
 
             background:
-                rgba(255,255,255,.97);
+                var(--surface);
 
             box-shadow:
                 var(--shadow-sm);
 
-            cursor: pointer;
-
             transition:
-                transform .28s ease,
-                box-shadow .28s ease,
-                border-color .28s ease;
-        }
-
-
-        .bus-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            top: 0;
-            bottom: 0;
-
-            width: 3px;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
-
-            transform:
-                scaleY(0);
-
-            transform-origin: center;
-
-            transition:
-                transform .28s ease;
+                border-color .2s ease,
+                box-shadow .2s ease;
         }
 
 
         .bus-card:hover {
 
-            transform:
-                translateY(-4px);
+            border-color:
+                #D9D5F5;
 
             box-shadow:
                 var(--shadow-md);
-
-            border-color:
-                #DCD8F8;
-        }
-
-
-        .bus-card:hover::before,
-        .bus-card.expanded::before {
-
-            transform:
-                scaleY(1);
         }
 
 
         .bus-card.expanded {
 
             border-color:
-                #D8D3F7;
+                var(--primary);
+
+            border-radius:
+                var(--radius-lg)
+                var(--radius-lg)
+                0
+                0;
 
             box-shadow:
-                var(--shadow-md);
+                0 4px 16px
+                rgba(109,92,231,.07);
         }
 
+
+        /* =========================================================
+           CARD TOP
+        ========================================================= */
 
         .card-top {
 
-            display: flex;
+            min-width:
+                0;
 
-            align-items: flex-start;
+            display:
+                flex;
 
-            justify-content: space-between;
+            align-items:
+                flex-start;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
         }
 
 
-        .bus-badge {
+        .bus-identity {
 
-            display: flex;
+            min-width:
+                0;
 
-            align-items: center;
+            flex:
+                1 1 auto;
 
-            gap: 10px;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                7px;
         }
 
 
         .bus-number {
 
-            min-width: 55px;
-            height: 35px;
+            min-width:
+                48px;
 
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
+            height:
+                31px;
 
             padding:
-                0 11px;
+                0 10px;
 
-            border-radius: 10px;
+            display:
+                inline-flex;
 
-            color: white;
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            flex-shrink:
+                0;
+
+            border-radius:
+                10px;
 
             background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
+                var(--primary);
 
-            font-size: 12px;
+            color:
+                #fff;
 
-            font-weight: 900;
+            font-size:
+                13px;
 
-            box-shadow:
-                0 7px 17px
-                rgba(109,92,231,.2);
-
-            transition:
-                transform .25s ease;
+            font-weight:
+                800;
         }
 
 
-        .bus-card:hover
-        .bus-number {
-
-            transform:
-                scale(1.05);
-        }
-
+        /* =========================================================
+           BUS TYPE
+        ========================================================= */
 
         .bus-type {
 
-            color:
-                var(--muted);
+            max-width:
+                100%;
 
-            font-size: 8px;
+            display:
+                inline-flex;
 
-            font-weight: 800;
+            align-items:
+                center;
 
-            text-transform: uppercase;
+            gap:
+                5px;
 
-            letter-spacing: .09em;
+            min-width:
+                0;
+
+            padding:
+                6px 9px;
+
+            border-radius:
+                999px;
+
+            font-size:
+                clamp(8px, .7vw, 10px);
+
+            font-weight:
+                800;
+
+            white-space:
+                nowrap;
         }
 
 
-        .expand-button {
-
-            width: 32px;
-            height: 32px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background:
-                #F5F5F8;
+        .bus-type.government {
 
             color:
-                #9695A4;
+                var(--government);
+
+            background:
+                var(--government-bg);
+        }
+
+
+        .bus-type.private {
+
+            color:
+                var(--private);
+
+            background:
+                var(--private-bg);
+        }
+
+
+        .bus-type i {
+
+            flex-shrink:
+                0;
+
+            font-size:
+                10px;
+        }
+
+
+        /* =========================================================
+           EXPAND BUTTON
+        ========================================================= */
+
+        .expand-button {
+
+            width:
+                clamp(38px, 3vw, 42px);
+
+            height:
+                clamp(38px, 3vw, 42px);
+
+            flex:
+                0 0 auto;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border:
+                1px solid #DED9F4;
+
+            border-radius:
+                50%;
+
+            background:
+                #F7F5FF;
+
+            color:
+                var(--primary);
+
+            font-size:
+                12px;
 
             transition:
-                transform .3s ease,
-                background .3s ease,
-                color .3s ease;
+                background .2s ease,
+                border-color .2s ease,
+                color .2s ease,
+                transform .25s ease;
         }
 
 
@@ -974,8 +1243,18 @@
             background:
                 var(--primary-light);
 
+            border-color:
+                #CFC8F2;
+
             color:
-                var(--primary);
+                var(--primary-dark);
+        }
+
+
+        .expand-button:active {
+
+            transform:
+                scale(.94);
         }
 
 
@@ -985,6 +1264,9 @@
             background:
                 var(--primary-light);
 
+            border-color:
+                #D4CEF4;
+
             color:
                 var(--primary);
 
@@ -993,22 +1275,46 @@
         }
 
 
-        /* =========================
+        .bus-card.expanded
+        .expand-button:active {
+
+            transform:
+                rotate(180deg)
+                scale(.94);
+        }
+
+
+        /* =========================================================
            ROUTE
-        ========================= */
+        ========================================================= */
 
         .route {
 
-            margin-top: 19px;
+            min-width:
+                0;
 
-            display: grid;
+            margin-top:
+                clamp(15px, 1.7vw, 19px);
+
+            display:
+                grid;
 
             grid-template-columns:
-                1fr 45px 1fr;
+                minmax(0, 1fr)
+                clamp(32px, 3vw, 44px)
+                minmax(0, 1fr);
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 8px;
+            gap:
+                6px;
+        }
+
+
+        .route > div {
+            min-width:
+                0;
         }
 
 
@@ -1017,179 +1323,137 @@
             color:
                 var(--muted);
 
-            font-size: 7px;
+            font-size:
+                clamp(8px, .65vw, 10px);
 
-            font-weight: 800;
+            font-weight:
+                700;
 
-            text-transform: uppercase;
+            letter-spacing:
+                .08em;
 
-            letter-spacing: .11em;
+            text-transform:
+                uppercase;
         }
 
 
         .route-name {
 
-            margin-top: 4px;
+            overflow:
+                hidden;
 
-            overflow: hidden;
+            margin-top:
+                3px;
 
             color:
                 var(--text);
 
-            font-size: 12px;
+            font-size:
+                clamp(12px, 1vw, 15px);
 
-            font-weight: 800;
+            font-weight:
+                800;
 
-            text-overflow: ellipsis;
+            letter-spacing:
+                -.025em;
 
-            white-space: nowrap;
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
         }
 
 
         .route-connector {
 
-            position: relative;
+            display:
+                flex;
 
-            height: 2px;
+            align-items:
+                center;
 
-            background:
-                #E3E0F6;
-        }
+            justify-content:
+                center;
 
+            margin-top:
+                13px;
 
-        .route-connector::before {
-
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            top: 50%;
-
-            width: 7px;
-            height: 7px;
-
-            border:
-                2px solid var(--primary);
-
-            border-radius: 50%;
-
-            background: white;
-
-            transform:
-                translateY(-50%);
-        }
-
-
-        .route-connector::after {
-
-            content: "";
-
-            position: absolute;
-
-            right: 0;
-            top: 50%;
-
-            width: 7px;
-            height: 7px;
-
-            border-top:
-                2px solid var(--primary);
-
-            border-right:
-                2px solid var(--primary);
-
-            transform:
-                translateY(-50%)
-                rotate(45deg);
-        }
-
-
-        .route-connector span {
-
-            position: absolute;
-
-            top: 50%;
-            left: 0;
-
-            width: 5px;
-            height: 5px;
-
-            border-radius: 50%;
-
-            background:
+            color:
                 var(--primary);
 
-            transform:
-                translateY(-50%);
-
-            animation:
-                routeMove
-                2s
-                linear
-                infinite;
+            font-size:
+                clamp(16px, 1.5vw, 20px);
         }
 
 
-        @keyframes routeMove {
-
-            from {
-                left: 8%;
-            }
-
-            to {
-                left: 88%;
-            }
-        }
-
-
-        /* =========================
+        /* =========================================================
            CARD INFO
-        ========================= */
+        ========================================================= */
 
         .card-info {
 
-            margin-top: 18px;
+            margin-top:
+                clamp(14px, 1.5vw, 17px);
 
-            padding-top: 14px;
+            padding-top:
+                clamp(12px, 1.3vw, 15px);
 
             border-top:
-                1px solid #F0EFF4;
+                1px solid var(--border);
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(3,1fr);
+                repeat(
+                    3,
+                    minmax(0, 1fr)
+                );
 
-            gap: 8px;
+            gap:
+                8px;
         }
 
 
         .info {
 
-            display: flex;
+            min-width:
+                0;
 
-            align-items: center;
+            display:
+                flex;
 
-            gap: 7px;
+            align-items:
+                center;
 
-            min-width: 0;
+            gap:
+                7px;
         }
 
 
         .info-icon {
 
-            width: 30px;
-            height: 30px;
+            width:
+                clamp(32px, 3vw, 38px);
 
-            flex-shrink: 0;
+            height:
+                clamp(32px, 3vw, 38px);
 
-            display: flex;
+            flex:
+                0 0 auto;
 
-            align-items: center;
-            justify-content: center;
+            display:
+                flex;
 
-            border-radius: 9px;
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
 
             background:
                 var(--primary-light);
@@ -1197,139 +1461,207 @@
             color:
                 var(--primary);
 
-            font-size: 12px;
-
-            transition:
-                transform .25s ease;
+            font-size:
+                clamp(12px, 1vw, 15px);
         }
 
 
-        .bus-card:hover
-        .info-icon {
+        .info-text {
 
-            transform:
-                translateY(-2px);
+            min-width:
+                0;
+
+            flex:
+                1 1 auto;
         }
 
 
         .info-label {
 
+            overflow:
+                hidden;
+
             color:
                 var(--muted);
 
-            font-size: 7px;
+            font-size:
+                clamp(7px, .65vw, 9px);
 
-            font-weight: 600;
+            font-weight:
+                600;
+
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
         }
 
 
         .info-value {
 
-            margin-top: 2px;
+            overflow:
+                hidden;
+
+            margin-top:
+                2px;
 
             color:
-                #383745;
+                var(--text);
 
-            font-size: 9px;
+            font-size:
+                clamp(9px, .75vw, 11px);
 
-            font-weight: 800;
+            font-weight:
+                800;
 
-            white-space: nowrap;
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
         }
 
 
-        /* =========================
-           STOPS CARD
-        ========================= */
+        .info-value.primary {
+
+            color:
+                var(--primary);
+
+            font-size:
+                clamp(10px, .8vw, 12px);
+        }
+
+
+        /* =========================================================
+           STOPS
+        ========================================================= */
 
         .stopping-card {
 
-            padding: 19px;
+            min-width:
+                0;
+
+            margin-top:
+                -1px;
+
+            padding:
+                clamp(15px, 1.7vw, 21px);
 
             border:
-                1px solid #E3E2EC;
+                1px solid var(--primary);
+
+            border-top:
+                0;
 
             border-radius:
-                var(--radius-md);
+                0
+                0
+                var(--radius-lg)
+                var(--radius-lg);
 
             background:
-                linear-gradient(
-                    180deg,
-                    #FFFFFF,
-                    #FAFAFD
-                );
+                #FCFBFF;
 
             animation:
-                expandDown
-                .35s
-                cubic-bezier(.2,.8,.2,1);
+                expandDown .22s ease;
         }
 
 
         @keyframes expandDown {
 
             from {
-                opacity: 0;
+
+                opacity:
+                    0;
 
                 transform:
-                    translateY(-8px)
-                    scale(.98);
+                    translateY(-5px);
             }
 
             to {
-                opacity: 1;
+
+                opacity:
+                    1;
 
                 transform:
-                    translateY(0)
-                    scale(1);
+                    translateY(0);
             }
         }
 
 
         .stopping-header {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px;
         }
 
 
         .stopping-title {
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 9px;
+            gap:
+                9px;
 
             color:
                 var(--text);
 
-            font-size: 11px;
+            font-size:
+                clamp(11px, .9vw, 13px);
 
-            font-weight: 800;
+            font-weight:
+                800;
         }
 
 
         .stopping-title i {
 
-            width: 29px;
-            height: 29px;
+            width:
+                34px;
 
-            display: flex;
+            height:
+                34px;
 
-            align-items: center;
-            justify-content: center;
+            flex-shrink:
+                0;
 
-            border-radius: 8px;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
 
             background:
                 var(--primary-light);
 
             color:
                 var(--primary);
+
+            font-size:
+                13px;
         }
 
 
@@ -1338,90 +1670,89 @@
             color:
                 var(--muted);
 
-            font-size: 8px;
+            font-size:
+                clamp(9px, .7vw, 11px);
 
-            font-weight: 700;
+            font-weight:
+                700;
         }
 
 
         .stops {
 
-            margin-top: 18px;
+            margin-top:
+                15px;
         }
 
 
         .stop {
 
-            position: relative;
+            position:
+                relative;
 
-            display: grid;
+            min-height:
+                44px;
+
+            display:
+                grid;
 
             grid-template-columns:
-                20px 1fr auto;
+                18px
+                minmax(0, 1fr)
+                auto;
 
-            gap: 10px;
+            align-items:
+                start;
 
-            min-height: 46px;
+            gap:
+                10px;
         }
 
 
         .stop-track {
 
-            position: relative;
+            position:
+                relative;
 
-            display: flex;
+            height:
+                100%;
 
-            justify-content: center;
+            display:
+                flex;
+
+            justify-content:
+                center;
         }
 
 
         .stop-track::before {
 
-            content: "";
+            content:
+                "";
 
-            position: absolute;
+            position:
+                absolute;
 
-            top: 4px;
+            top:
+                2px;
 
-            width: 10px;
-            height: 10px;
+            width:
+                10px;
+
+            height:
+                10px;
 
             border:
                 2px solid var(--primary);
 
-            border-radius: 50%;
-
-            background: white;
-
-            z-index: 2;
-
-            transition:
-                transform .2s ease;
-        }
-
-
-        .stop:hover
-        .stop-track::before {
-
-            transform:
-                scale(1.25);
-        }
-
-
-        .stop:not(:last-child)
-        .stop-track::after {
-
-            content: "";
-
-            position: absolute;
-
-            top: 14px;
-            bottom: -2px;
-
-            width: 2px;
+            border-radius:
+                50%;
 
             background:
-                #DDD9F5;
+                #fff;
+
+            z-index:
+                2;
         }
 
 
@@ -1430,21 +1761,51 @@
 
             background:
                 var(--primary);
+        }
 
-            box-shadow:
-                0 0 0 5px
-                rgba(109,92,231,.10);
+
+        .stop:not(:last-child)
+        .stop-track::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                11px;
+
+            bottom:
+                -2px;
+
+            width:
+                1px;
+
+            background:
+                #DDD9EF;
         }
 
 
         .stop-name {
 
+            min-width:
+                0;
+
             color:
-                #454452;
+                var(--text-secondary);
 
-            font-size: 10px;
+            font-size:
+                clamp(10px, .8vw, 12px);
 
-            font-weight: 700;
+            font-weight:
+                700;
+
+            line-height:
+                1.35;
+
+            overflow-wrap:
+                anywhere;
         }
 
 
@@ -1453,52 +1814,70 @@
             color:
                 var(--muted);
 
-            font-size: 9px;
+            font-size:
+                clamp(9px, .7vw, 11px);
 
-            font-weight: 600;
+            font-weight:
+                600;
+
+            white-space:
+                nowrap;
         }
 
 
-        /* =========================
-           EMPTY STATE
-        ========================= */
+        /* =========================================================
+           EMPTY
+        ========================================================= */
 
         .empty {
 
-            display: none;
+            display:
+                none;
 
-            align-items: center;
+            align-items:
+                center;
 
-            flex-direction: column;
+            flex-direction:
+                column;
 
-            padding: 70px 20px;
+            padding:
+                clamp(44px, 7vw, 80px)
+                20px;
 
-            text-align: center;
+            text-align:
+                center;
         }
 
 
         .empty.show {
 
-            display: flex;
+            display:
+                flex;
 
             animation:
-                fadeUp
-                .35s
-                ease;
+                cardEnter .25s ease;
         }
 
 
         .empty-icon {
 
-            width: 74px;
-            height: 74px;
+            width:
+                64px;
 
-            display: flex;
+            height:
+                64px;
 
-            align-items: center;
-            justify-content: center;
+            display:
+                flex;
 
-            border-radius: 23px;
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                18px;
 
             background:
                 var(--primary-light);
@@ -1506,178 +1885,207 @@
             color:
                 var(--primary);
 
-            font-size: 26px;
-
-            animation:
-                emptyFloat
-                3s
-                ease-in-out
-                infinite;
-        }
-
-
-        @keyframes emptyFloat {
-
-            0%,
-            100% {
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-                transform:
-                    translateY(-6px);
-            }
+            font-size:
+                22px;
         }
 
 
         .empty-title {
 
-            margin-top: 17px;
+            margin:
+                16px 0 0;
 
             color:
                 var(--text);
 
-            font-size: 15px;
+            font-size:
+                clamp(14px, 1vw, 16px);
 
-            font-weight: 900;
+            font-weight:
+                800;
         }
 
 
         .empty-text {
 
-            max-width: 280px;
+            max-width:
+                320px;
 
-            margin-top: 8px;
+            margin:
+                7px 0 0;
 
             color:
                 var(--muted);
 
-            font-size: 10px;
+            font-size:
+                clamp(10px, .8vw, 12px);
 
-            line-height: 1.7;
+            line-height:
+                1.7;
         }
 
 
-        /* =========================
+        /* =========================================================
            BOTTOM NAV
-        ========================= */
+        ========================================================= */
 
         .bottom-nav {
 
-            position: fixed;
+            position:
+                fixed;
 
-            right: 0;
-            bottom: 0;
-            left: 0;
+            right:
+                0;
 
-            z-index: 1000;
+            bottom:
+                0;
 
-            height: 78px;
+            left:
+                0;
+
+            z-index:
+                1000;
+
+            min-height:
+                var(--nav-height);
+
+            padding:
+                0
+                0
+                env(safe-area-inset-bottom);
 
             border-top:
-                1px solid rgba(228,227,236,.9);
+                1px solid var(--border);
 
             background:
-                rgba(255,255,255,.88);
+                rgba(255,255,255,.96);
 
             backdrop-filter:
-                blur(22px);
+                blur(16px);
 
             -webkit-backdrop-filter:
-                blur(22px);
+                blur(16px);
 
             box-shadow:
-                0 -10px 35px
-                rgba(20,20,40,.035);
-
-            padding-bottom:
-                env(safe-area-inset-bottom);
+                0 -6px 20px
+                rgba(24,20,60,.035);
         }
 
 
         .nav-inner {
 
-            width: 100%;
+            width:
+                min(
+                    calc(100% - 20px),
+                    600px
+                );
 
-            max-width: 520px;
+            min-height:
+                var(--nav-height);
 
-            height: 100%;
+            margin:
+                0 auto;
 
-            margin: auto;
-
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(4,1fr);
+                repeat(4, minmax(0, 1fr));
         }
 
 
         .nav-item {
 
-            position: relative;
+            position:
+                relative;
 
-            display: flex;
+            min-width:
+                0;
 
-            align-items: center;
-            justify-content: center;
+            border:
+                0;
 
-            flex-direction: column;
-
-            gap: 5px;
-
-            border: none;
-
-            background: transparent;
+            background:
+                transparent;
 
             color:
-                #A1A0AE;
+                var(--muted);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            flex-direction:
+                column;
+
+            gap:
+                4px;
+
+            padding:
+                6px 4px;
 
             transition:
-                color .25s ease,
-                transform .2s ease;
+                color .2s ease;
         }
 
 
         .nav-item i {
 
-            width: 36px;
-            height: 29px;
+            width:
+                clamp(42px, 5vw, 50px);
 
-            display: flex;
+            height:
+                clamp(38px, 4vw, 44px);
 
-            align-items: center;
-            justify-content: center;
+            display:
+                flex;
 
-            border-radius: 11px;
+            align-items:
+                center;
 
-            font-size: 18px;
+            justify-content:
+                center;
+
+            border-radius:
+                16px;
+
+            background:
+                transparent;
+
+            font-size:
+                clamp(16px, 1.5vw, 19px);
 
             transition:
-                transform .25s ease,
-                background .25s ease;
+                background .2s ease,
+                color .2s ease,
+                transform .2s ease;
         }
 
 
         .nav-item span {
 
-            font-size: 8px;
+            overflow:
+                hidden;
 
-            font-weight: 800;
-        }
+            max-width:
+                100%;
 
+            font-size:
+                clamp(8px, .7vw, 10px);
 
-        .nav-item:hover {
+            font-weight:
+                700;
 
-            color:
-                var(--primary);
-        }
+            text-overflow:
+                ellipsis;
 
-
-        .nav-item:active {
-
-            transform:
-                scale(.91);
+            white-space:
+                nowrap;
         }
 
 
@@ -1693,280 +2101,635 @@
             background:
                 var(--primary-light);
 
+            color:
+                var(--primary);
+
             transform:
-                translateY(-2px);
+                translateY(-1px);
         }
 
 
-        .nav-item.active::before {
+        @media (hover: hover) {
 
-            content: "";
+            .nav-item:hover {
 
-            position: absolute;
+                color:
+                    var(--primary);
+            }
 
-            top: 0;
 
-            width: 34px;
-            height: 3px;
+            .nav-item:hover i {
+
+                background:
+                    var(--primary-light);
+
+                color:
+                    var(--primary);
+            }
+        }
+
+
+        .nav-item.active::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            bottom:
+                5px;
+
+            width:
+                4px;
+
+            height:
+                4px;
 
             border-radius:
-                0 0 8px 8px;
+                50%;
 
             background:
                 var(--primary);
-
-            animation:
-                navLine
-                .3s
-                ease;
         }
 
 
-        @keyframes navLine {
-
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 34px;
-            }
-        }
-
-
-        /* =========================
+        /* =========================================================
            TOAST
-        ========================= */
+        ========================================================= */
 
         .toast {
 
-            position: fixed;
+            position:
+                fixed;
 
-            left: 50%;
-            bottom: 95px;
+            left:
+                50%;
 
-            transform:
-                translate(-50%, 20px);
+            bottom:
+                calc(
+                    var(--nav-height)
+                    + env(safe-area-inset-bottom)
+                    + 18px
+                );
 
-            background:
-                rgba(23,22,38,.95);
+            z-index:
+                2000;
 
-            color: white;
+            width:
+                max-content;
+
+            max-width:
+                calc(100% - 32px);
 
             padding:
-                10px 18px;
+                10px 16px;
 
-            border-radius: 30px;
+            transform:
+                translate(-50%, 10px);
 
-            font-size: 11px;
+            border-radius:
+                999px;
 
-            font-weight: 700;
+            background:
+                var(--text);
 
-            z-index: 2000;
+            color:
+                #fff;
 
-            opacity: 0;
+            font-size:
+                11px;
 
-            pointer-events: none;
+            font-weight:
+                700;
+
+            text-align:
+                center;
+
+            opacity:
+                0;
+
+            pointer-events:
+                none;
 
             transition:
-                opacity .25s ease,
-                transform .25s ease;
-
-            box-shadow:
-                0 10px 30px
-                rgba(0,0,0,.2);
-
-            text-align: center;
-
-            max-width: 90%;
+                opacity .2s ease,
+                transform .2s ease;
         }
 
 
         .toast.show {
 
-            opacity: 1;
+            opacity:
+                1;
 
             transform:
                 translate(-50%, 0);
         }
 
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        /* =========================================================
+           DESKTOP LARGE
+        ========================================================= */
 
-        @media (min-width: 700px) {
-
-            .page {
-                padding-top: 32px;
-            }
-
-            /*
-                Reduced desktop hero height
-            */
-            .hero {
-
-                min-height: 145px;
-
-                padding:
-                    24px 30px;
-            }
-
-
-            .hero-title {
-
-                font-size: 30px;
-            }
-
-
-            .hero-text {
-
-                font-size: 11px;
-            }
-
-
-            .hero-icon {
-
-                right: 45px;
-
-                font-size: 125px;
-            }
-        }
-
-
-        @media (max-width: 640px) {
+        @media (min-width: 1600px) {
 
             .page {
 
-                padding:
-                    17px 14px 40px;
+                padding-top:
+                    42px;
             }
 
 
-            /*
-                Main mobile hero height
-                reduced from 195px
-                to 155px
-            */
-            .hero {
+            .results {
 
-                min-height: 155px;
-
-                padding:
-                    19px 20px;
-            }
-
-
-            .hero-title {
-
-                font-size: 23px;
-
-                margin-top: 10px;
-            }
-
-
-            .hero-text {
-
-                margin-top: 6px;
-
-                font-size: 9px;
-
-                line-height: 1.55;
-            }
-
-
-            .hero-icon {
-
-                right: 3px;
-
-                bottom: -15px;
-
-                font-size: 85px;
+                gap:
+                    20px;
             }
 
 
             .bus-card {
 
-                padding: 16px;
+                padding:
+                    22px;
+            }
+
+
+            .hero {
+
+                min-height:
+                    230px;
+
+                display:
+                    flex;
+
+                flex-direction:
+                    column;
+
+                justify-content:
+                    center;
             }
         }
 
 
-        @media (max-width: 390px) {
+        /* =========================================================
+           TABLET / SMALL DESKTOP
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .results {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 640px) {
+
+            :root {
+
+                --page-gutter:
+                    14px;
+
+                --nav-height:
+                    72px;
+            }
+
+
+            .top-nav {
+
+                min-height:
+                    60px;
+            }
+
+
+            .page {
+
+                padding-top:
+                    18px;
+            }
+
 
             .hero {
 
-                min-height: 150px;
-
                 padding:
-                    18px 18px;
+                    18px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .hero-route-motif {
+
+                width:
+                    150px;
+
+                opacity:
+                    .12;
             }
 
 
             .hero-title {
 
-                font-size: 21px;
+                font-size:
+                    20px;
             }
 
 
             .hero-text {
 
-                max-width: 260px;
+                font-size:
+                    12px;
+            }
 
-                font-size: 8.5px;
+
+            .results {
+
+                gap:
+                    11px;
+            }
+
+
+            .bus-card {
+
+                padding:
+                    14px 15px;
+            }
+
+
+            .stopping-card {
+
+                padding:
+                    16px 15px 19px;
+            }
+
+
+            .card-info {
+
+                grid-template-columns:
+                    repeat(
+                        3,
+                        minmax(0, 1fr)
+                    );
+            }
+
+
+            .info {
+
+                gap:
+                    6px;
+            }
+        }
+
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 480px) {
+
+            .hero-eyebrow {
+
+                font-size:
+                    8.5px;
+            }
+
+
+            .hero-title {
+
+                font-size:
+                    19px;
             }
 
 
             .route {
 
                 grid-template-columns:
-                    1fr 30px 1fr;
+                    minmax(0,1fr)
+                    34px
+                    minmax(0,1fr);
             }
 
 
             .route-name {
 
-                font-size: 10px;
+                font-size:
+                    13px;
             }
 
 
             .card-info {
 
-                gap: 4px;
-            }
-
-
-            .info {
-
-                gap: 5px;
+                gap:
+                    5px;
             }
 
 
             .info-icon {
 
-                width: 26px;
-                height: 26px;
+                width:
+                    33px;
 
-                font-size: 10px;
+                height:
+                    33px;
+
+                font-size:
+                    12px;
+            }
+
+
+            .info-label {
+
+                font-size:
+                    7px;
             }
 
 
             .info-value {
 
-                font-size: 8px;
+                font-size:
+                    9px;
+            }
+
+
+            .info-value.primary {
+
+                font-size:
+                    10px;
+            }
+        }
+
+
+        /* =========================================================
+           NARROW MOBILE
+        ========================================================= */
+
+        @media (max-width: 390px) {
+
+            .hero-top {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+            }
+
+
+            .hero-eyebrow {
+
+                font-size:
+                    8px;
+            }
+
+
+            .hero-title {
+
+                font-size:
+                    18px;
+            }
+
+
+            .hero-text {
+
+                font-size:
+                    11px;
             }
 
 
             .bus-type {
 
-                font-size: 7px;
+                padding:
+                    5px 7px;
+
+                font-size:
+                    7px;
+            }
+
+
+            .route {
+
+                grid-template-columns:
+                    minmax(0,1fr)
+                    28px
+                    minmax(0,1fr);
+            }
+
+
+            .route-name {
+
+                font-size:
+                    12px;
+            }
+
+
+            .card-info {
+
+                grid-template-columns:
+                    1fr;
+                
+                gap:
+                    9px;
+            }
+
+
+            .info {
+
+                width:
+                    100%;
+            }
+
+
+            .info-icon {
+
+                width:
+                    34px;
+
+                height:
+                    34px;
+            }
+
+
+            .nav-item span {
+
+                font-size:
+                    8px;
+            }
+
+
+            .nav-item i {
+
+                width:
+                    42px;
+
+                height:
+                    37px;
             }
         }
 
 
-        /* =========================
+        /* =========================================================
+           VERY NARROW / ZOOMED LAYOUT
+        ========================================================= */
+
+        @media (max-width: 320px) {
+
+            .page {
+
+                width:
+                    calc(100% - 20px);
+            }
+
+
+            .hero {
+
+                padding:
+                    16px;
+            }
+
+
+            .hero-title {
+
+                font-size:
+                    17px;
+            }
+
+
+            .hero-text {
+
+                font-size:
+                    10.5px;
+            }
+
+
+            .bus-card {
+
+                padding:
+                    13px;
+            }
+
+
+            .card-top {
+
+                align-items:
+                    flex-start;
+            }
+
+
+            .bus-identity {
+
+                padding-right:
+                    4px;
+            }
+
+
+            .route {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    8px;
+            }
+
+
+            .route-connector {
+
+                justify-content:
+                    flex-start;
+
+                margin:
+                    0;
+
+                transform:
+                    rotate(90deg);
+
+                transform-origin:
+                    left center;
+
+                width:
+                    20px;
+
+                height:
+                    18px;
+            }
+
+
+            .card-info {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .stopping-header {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+            }
+
+
+            .stop {
+
+                grid-template-columns:
+                    18px
+                    minmax(0,1fr);
+            }
+
+
+            .stop-time {
+
+                grid-column:
+                    2;
+
+                margin-top:
+                    -7px;
+            }
+        }
+
+
+        /* =========================================================
+           ZOOM / ACCESSIBILITY SUPPORT
+           
+           Browser zoom effectively reduces the CSS viewport.
+           These rules intentionally allow the layout to reflow.
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .results {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .bus-wrapper,
+            .bus-card,
+            .stopping-card {
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
+            }
+        }
+
+
+        /* =========================================================
            REDUCED MOTION
-        ========================= */
+        ========================================================= */
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -1996,9 +2759,9 @@
 <body>
 
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+    <!-- =========================================================
+         TOP NAV
+    ========================================================= -->
 
     <header class="top-nav">
 
@@ -2008,22 +2771,19 @@
             aria-label="DPI One Home"
         >
 
-            <span class="logo-main">
-                DPI
-            </span>
-
-            <span class="logo-light">
-                One
-            </span>
+            <img
+                src="https://uploads.onecompiler.io/3zky9aw9p/1786855806735/20260816_101943.png"
+                alt="DPI One Logo"
+            >
 
         </a>
 
 
         <button
-            class="profile"
             id="profileBtn"
+            class="profile"
             type="button"
-            aria-label="Profile"
+            aria-label="Open account"
         >
             D
         </button>
@@ -2031,64 +2791,116 @@
     </header>
 
 
-    <!-- =========================
+    <!-- =========================================================
          MAIN
-    ========================= -->
+    ========================================================= -->
 
     <main class="page">
 
 
-        <!-- HERO -->
+        <!-- =====================================================
+             HERO
+        ===================================================== -->
 
         <section
             class="hero"
             aria-labelledby="heroTitle"
         >
 
-            <div class="hero-content">
+            <div class="hero-top">
 
-                <div class="hero-eyebrow">
-
-                    <span class="hero-dot"></span>
-
-                    Good Morning 🌞 | EV Sanjeevan
-
-                </div>
-
-
-                <h1
-                    id="heroTitle"
-                    class="hero-title"
+                <img
+                    src="https://uploads.onecompiler.io/3zky9aw9p/1786855338029/20260815_192757.png"
+                    alt="DPI One"
+                    class="hero-logo"
                 >
-                    Explore DPI One
-                </h1>
 
 
-                <p class="hero-text">
+                <span class="hero-eyebrow">
 
-                    Find bus routes, stops and schedules
-                    across the Dharmapuri network.
+                    <i
+                        class="bi bi-geo-alt-fill"
+                        aria-hidden="true"
+                    ></i>
 
-                </p>
+                    Dharmapuri Bus Network
+
+                </span>
 
             </div>
 
 
-            <i
-                class="bi bi-compass hero-icon"
+            <h1
+                id="heroTitle"
+                class="hero-title"
+            >
+                Explore DPI One
+            </h1>
+
+
+            <p class="hero-text">
+                Find bus routes, stops and schedules
+                across Dharmapuri.
+            </p>
+
+
+            <svg
+                class="hero-route-motif"
+                viewBox="0 0 190 120"
+                fill="none"
                 aria-hidden="true"
-            ></i>
+            >
+
+                <path
+                    d="M -10 95 C 30 95, 40 40, 75 40 S 120 85, 155 60 S 175 20, 205 20"
+                    stroke="#FFFFFF"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-dasharray="1 9"
+                />
+
+                <circle
+                    cx="-2"
+                    cy="94.5"
+                    r="5"
+                    fill="#FFFFFF"
+                />
+
+                <circle
+                    cx="75"
+                    cy="40"
+                    r="4"
+                    fill="#FFFFFF"
+                    opacity=".8"
+                />
+
+                <circle
+                    cx="155"
+                    cy="60"
+                    r="4"
+                    fill="#FFFFFF"
+                    opacity=".8"
+                />
+
+                <circle
+                    cx="197"
+                    cy="21"
+                    r="5"
+                    fill="#FFFFFF"
+                />
+
+            </svg>
 
         </section>
 
 
-        <!-- =========================
+        <!-- =====================================================
              SEARCH
-        ========================= -->
+        ===================================================== -->
 
         <section
             class="search-section"
-            aria-label="Search"
+            aria-label="Search bus routes"
         >
 
             <i
@@ -2100,12 +2912,13 @@
             <input
                 id="searchInput"
                 class="search-box"
-                type="text"
-                placeholder="Search bus number, city or stop..."
+                type="search"
+                placeholder="Search bus, city or stop..."
                 maxlength="50"
                 autocomplete="off"
+                autocapitalize="none"
                 spellcheck="false"
-                aria-label="Search bus routes"
+                aria-label="Search bus routes, cities or stops"
             >
 
 
@@ -2126,9 +2939,9 @@
         </section>
 
 
-        <!-- =========================
+        <!-- =====================================================
              SECTION HEADER
-        ========================= -->
+        ===================================================== -->
 
         <div class="section-header">
 
@@ -2136,7 +2949,7 @@
                 id="sectionTitle"
                 class="section-title"
             >
-                Suggested Routes
+                All Routes
             </span>
 
 
@@ -2144,22 +2957,27 @@
                 id="resultCount"
                 class="result-count"
             >
-                3 routes
+                5 routes
             </span>
 
         </div>
 
 
-        <!-- RESULTS -->
+        <!-- =====================================================
+             RESULTS
+        ===================================================== -->
 
         <section
             id="results"
             class="results"
             aria-live="polite"
+            aria-label="Bus routes"
         ></section>
 
 
-        <!-- EMPTY -->
+        <!-- =====================================================
+             EMPTY
+        ===================================================== -->
 
         <section
             id="empty"
@@ -2183,10 +3001,8 @@
 
 
             <p class="empty-text">
-
                 Try another bus number,
                 city or bus stop.
-
             </p>
 
         </section>
@@ -2194,9 +3010,9 @@
     </main>
 
 
-    <!-- =========================
+    <!-- =========================================================
          BOTTOM NAV
-    ========================= -->
+    ========================================================= -->
 
     <nav
         class="bottom-nav"
@@ -2283,43 +3099,40 @@
     </nav>
 
 
-    <!-- TOAST -->
+    <!-- =========================================================
+         TOAST
+    ========================================================= -->
 
     <div
         id="toast"
         class="toast"
         role="status"
+        aria-live="polite"
     ></div>
 
 
-    <!-- =========================
+    <!-- =========================================================
          JAVASCRIPT
-    ========================= -->
+    ========================================================= -->
 
     <script>
 
         "use strict";
 
 
-        /* =========================
+        /* =========================================================
            BUS DATA
-        ========================= */
+        ========================================================= */
 
         const buses = Object.freeze([
 
             {
                 id: 1,
-
                 bus: "5A",
-
-                type: "Ordinary Bus",
-
+                type: "Government",
                 start: "Dharmapuri",
-
                 dest: "Elagiri",
-
                 time: "06:30 AM",
-
                 price: "₹20",
 
                 stops: [
@@ -2350,17 +3163,11 @@
 
             {
                 id: 2,
-
                 bus: "7",
-
-                type: "Ordinary Bus",
-
+                type: "Government",
                 start: "Dharmapuri",
-
                 dest: "Harur",
-
                 time: "07:15 AM",
-
                 price: "₹25",
 
                 stops: [
@@ -2386,17 +3193,11 @@
 
             {
                 id: 3,
-
                 bus: "12A",
-
-                type: "Express",
-
+                type: "Private",
                 start: "Palacode",
-
                 dest: "Dharmapuri",
-
                 time: "08:00 AM",
-
                 price: "₹20",
 
                 stops: [
@@ -2422,17 +3223,11 @@
 
             {
                 id: 4,
-
                 bus: "10",
-
-                type: "Ordinary Bus",
-
+                type: "Government",
                 start: "Dharmapuri",
-
                 dest: "Pennagaram",
-
                 time: "09:00 AM",
-
                 price: "₹30",
 
                 stops: [
@@ -2453,17 +3248,11 @@
 
             {
                 id: 5,
-
                 bus: "21",
-
-                type: "Express",
-
+                type: "Private",
                 start: "Bommidi",
-
                 dest: "Dharmapuri",
-
                 time: "10:30 AM",
-
                 price: "₹25",
 
                 stops: [
@@ -2484,95 +3273,155 @@
         ]);
 
 
-        /* =========================
+        /* =========================================================
            DOM
-        ========================= */
+        ========================================================= */
 
         const searchInput =
-            document.getElementById("searchInput");
+            document.getElementById(
+                "searchInput"
+            );
+
 
         const clearSearch =
-            document.getElementById("clearSearch");
+            document.getElementById(
+                "clearSearch"
+            );
+
 
         const results =
-            document.getElementById("results");
+            document.getElementById(
+                "results"
+            );
+
 
         const empty =
-            document.getElementById("empty");
+            document.getElementById(
+                "empty"
+            );
+
 
         const sectionTitle =
-            document.getElementById("sectionTitle");
+            document.getElementById(
+                "sectionTitle"
+            );
+
 
         const resultCount =
-            document.getElementById("resultCount");
+            document.getElementById(
+                "resultCount"
+            );
+
 
         const toast =
-            document.getElementById("toast");
+            document.getElementById(
+                "toast"
+            );
+
 
         const profileBtn =
-            document.getElementById("profileBtn");
+            document.getElementById(
+                "profileBtn"
+            );
 
 
-        /* =========================
+        let toastTimer =
+            null;
+
+
+        /* =========================================================
            TOAST
-        ========================= */
+        ========================================================= */
 
         function showToast(message) {
 
-            toast.textContent = message;
+            clearTimeout(
+                toastTimer
+            );
 
-            toast.classList.add("show");
 
-            setTimeout(() => {
+            toast.textContent =
+                message;
 
-                toast.classList.remove("show");
 
-            }, 2200);
+            toast.classList.add(
+                "show"
+            );
+
+
+            toastTimer =
+                setTimeout(
+                    () => {
+
+                        toast.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    2200
+                );
         }
 
 
-        /* =========================
+        /* =========================================================
            DEBOUNCE
-        ========================= */
+        ========================================================= */
 
-        function debounce(callback, delay) {
+        function debounce(
+            callback,
+            delay
+        ) {
 
-            let timer;
+            let timer =
+                null;
+
 
             return function (...args) {
 
-                clearTimeout(timer);
-
-                timer = setTimeout(
-                    () => callback.apply(this, args),
-                    delay
+                clearTimeout(
+                    timer
                 );
+
+
+                timer =
+                    setTimeout(
+                        () =>
+                            callback.apply(
+                                this,
+                                args
+                            ),
+                        delay
+                    );
             };
         }
 
 
-        /* =========================
-           FILTER
-        ========================= */
+        /* =========================================================
+           SEARCH
+        ========================================================= */
 
         function filterBuses(query) {
 
             const cleanQuery =
-                query.trim().toLowerCase();
+                query
+                    .trim()
+                    .toLowerCase();
 
 
             if (!cleanQuery) {
 
-                return buses.slice(0, 3);
+                return buses;
             }
 
 
             const ignoredWords = [
+
                 "to",
                 "from",
                 "via",
                 "-",
                 "–"
+
             ];
 
 
@@ -2581,58 +3430,83 @@
                     .split(/\s+/)
                     .filter(
                         term =>
-                            Boolean(term) &&
-                            !ignoredWords.includes(term)
+                            term &&
+                            !ignoredWords.includes(
+                                term
+                            )
                     );
 
 
-            return buses.filter(bus => {
+            return buses.filter(
+                bus => {
 
-                const stopNames =
-                    bus.stops
-                        .map(stop => stop.name)
-                        .join(" ");
-
-
-                const searchable = [
-
-                    bus.bus,
-
-                    bus.type,
-
-                    bus.start,
-
-                    bus.dest,
-
-                    stopNames
-
-                ]
-                .join(" ")
-                .toLowerCase();
+                    const stopNames =
+                        bus.stops
+                            .map(
+                                stop =>
+                                    stop.name
+                            )
+                            .join(" ");
 
 
-                return terms.every(
-                    term =>
-                        searchable.includes(term)
-                );
+                    const searchable = [
 
-            });
+                        bus.bus,
+                        bus.type,
+                        bus.start,
+                        bus.dest,
+                        stopNames
 
+                    ]
+                        .join(" ")
+                        .toLowerCase();
+
+
+                    return terms.every(
+                        term =>
+                            searchable.includes(
+                                term
+                            )
+                    );
+                }
+            );
         }
 
 
-        /* =========================
-           CREATE ELEMENT
-        ========================= */
+        /* =========================================================
+           BUS TYPE
+        ========================================================= */
+
+        function getBusTypeClass(type) {
+
+            return type === "Government"
+                ? "government"
+                : "private";
+        }
+
+
+        function getBusTypeIcon(type) {
+
+            return type === "Government"
+                ? "bi-building"
+                : "bi-bus-front";
+        }
+
+
+        /* =========================================================
+           SAFE ELEMENT CREATOR
+        ========================================================= */
 
         function createElement(
             tag,
-            className,
-            text
+            className = "",
+            text = null
         ) {
 
             const element =
-                document.createElement(tag);
+                document.createElement(
+                    tag
+                );
 
 
             if (className) {
@@ -2643,8 +3517,8 @@
 
 
             if (
-                text !== undefined &&
-                text !== null
+                text !== null &&
+                text !== undefined
             ) {
 
                 element.textContent =
@@ -2656,19 +3530,24 @@
         }
 
 
-        /* =========================
+        /* =========================================================
            RENDER
-        ========================= */
+        ========================================================= */
 
         function renderResults(query) {
 
             results.replaceChildren();
 
-            empty.classList.remove("show");
+
+            empty.classList.remove(
+                "show"
+            );
 
 
             const filtered =
-                filterBuses(query);
+                filterBuses(
+                    query
+                );
 
 
             const isSearching =
@@ -2678,7 +3557,7 @@
             sectionTitle.textContent =
                 isSearching
                     ? "Search Results"
-                    : "Suggested Routes";
+                    : "All Routes";
 
 
             resultCount.textContent =
@@ -2691,7 +3570,9 @@
 
             if (!filtered.length) {
 
-                empty.classList.add("show");
+                empty.classList.add(
+                    "show"
+                );
 
                 return;
             }
@@ -2700,22 +3581,21 @@
             filtered.forEach(
                 (bus, index) => {
 
-                    const card =
+                    results.appendChild(
                         createBusCard(
                             bus,
                             index
-                        );
-
-                    results.appendChild(card);
+                        )
+                    );
 
                 }
             );
         }
 
 
-        /* =========================
+        /* =========================================================
            BUS CARD
-        ========================= */
+        ========================================================= */
 
         function createBusCard(
             bus,
@@ -2730,7 +3610,7 @@
 
 
             wrapper.style.animationDelay =
-                `${index * 60}ms`;
+                `${index * 45}ms`;
 
 
             const card =
@@ -2740,25 +3620,9 @@
                 );
 
 
-            card.setAttribute(
-                "role",
-                "button"
-            );
-
-
-            card.setAttribute(
-                "tabindex",
-                "0"
-            );
-
-
-            card.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-
-            /* TOP */
+            /* =====================================================
+               TOP
+            ===================================================== */
 
             const top =
                 createElement(
@@ -2767,40 +3631,93 @@
                 );
 
 
-            const badge =
+            const identity =
                 createElement(
                     "div",
-                    "bus-badge"
+                    "bus-identity"
                 );
 
 
-            badge.appendChild(
+            const busNumber =
                 createElement(
                     "span",
                     "bus-number",
                     bus.bus
-                )
+                );
+
+
+            /* =====================================================
+               TYPE
+            ===================================================== */
+
+            const busType =
+                createElement(
+                    "span",
+                    `bus-type ${getBusTypeClass(bus.type)}`
+                );
+
+
+            const typeIcon =
+                document.createElement(
+                    "i"
+                );
+
+
+            typeIcon.className =
+                `bi ${getBusTypeIcon(bus.type)}`;
+
+
+            typeIcon.setAttribute(
+                "aria-hidden",
+                "true"
             );
 
 
-            badge.appendChild(
-                createElement(
-                    "span",
-                    "bus-type",
+            busType.append(
+                typeIcon,
+                document.createTextNode(
                     bus.type
                 )
             );
 
 
+            identity.append(
+                busNumber,
+                busType
+            );
+
+
+            /* =====================================================
+               EXPAND
+            ===================================================== */
+
             const expandButton =
                 createElement(
-                    "span",
+                    "button",
                     "expand-button"
                 );
 
 
+            expandButton.type =
+                "button";
+
+
+            expandButton.setAttribute(
+                "aria-label",
+                `Show stops for bus ${bus.bus}`
+            );
+
+
+            expandButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+
             const chevron =
-                document.createElement("i");
+                document.createElement(
+                    "i"
+                );
 
 
             chevron.className =
@@ -2819,12 +3736,14 @@
 
 
             top.append(
-                badge,
+                identity,
                 expandButton
             );
 
 
-            /* ROUTE */
+            /* =====================================================
+               ROUTE
+            ===================================================== */
 
             const route =
                 createElement(
@@ -2834,7 +3753,9 @@
 
 
             const from =
-                createElement("div");
+                createElement(
+                    "div"
+                );
 
 
             from.append(
@@ -2861,13 +3782,31 @@
                 );
 
 
+            const arrow =
+                document.createElement(
+                    "i"
+                );
+
+
+            arrow.className =
+                "bi bi-arrow-right";
+
+
+            arrow.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
             connector.appendChild(
-                createElement("span")
+                arrow
             );
 
 
             const to =
-                createElement("div");
+                createElement(
+                    "div"
+                );
 
 
             to.append(
@@ -2894,7 +3833,9 @@
             );
 
 
-            /* INFO */
+            /* =====================================================
+               INFO
+            ===================================================== */
 
             const info =
                 createElement(
@@ -2907,8 +3848,9 @@
 
                 buildInfo(
                     "bi-clock",
-                    "Timing",
-                    bus.time
+                    "Departure",
+                    bus.time,
+                    true
                 ),
 
                 buildInfo(
@@ -2919,7 +3861,7 @@
 
                 buildInfo(
                     "bi-cash",
-                    "Ticket",
+                    "Fare",
                     bus.price
                 )
 
@@ -2933,71 +3875,86 @@
             );
 
 
-            wrapper.appendChild(card);
-
-
-            /* TOGGLE */
-
-            function toggle() {
-
-                const isExpanded =
-                    card.classList.toggle(
-                        "expanded"
-                    );
-
-
-                card.setAttribute(
-                    "aria-expanded",
-                    String(isExpanded)
-                );
-
-
-                const existingStops =
-                    wrapper.querySelector(
-                        ".stopping-card"
-                    );
-
-
-                if (isExpanded) {
-
-                    if (!existingStops) {
-
-                        wrapper.appendChild(
-                            createStoppingCard(
-                                bus.stops
-                            )
-                        );
-                    }
-
-                } else {
-
-                    if (existingStops) {
-
-                        existingStops.remove();
-                    }
-                }
-            }
-
-
-            card.addEventListener(
-                "click",
-                toggle
+            wrapper.appendChild(
+                card
             );
 
 
-            card.addEventListener(
-                "keydown",
+            /* =====================================================
+               EXPAND / COLLAPSE
+            ===================================================== */
+
+            expandButton.addEventListener(
+                "click",
                 event => {
 
-                    if (
-                        event.key === "Enter" ||
-                        event.key === " "
-                    ) {
+                    event.preventDefault();
 
-                        event.preventDefault();
+                    event.stopPropagation();
 
-                        toggle();
+
+                    const isExpanded =
+                        card.classList.toggle(
+                            "expanded"
+                        );
+
+
+                    expandButton.setAttribute(
+                        "aria-expanded",
+                        String(isExpanded)
+                    );
+
+
+                    expandButton.setAttribute(
+                        "aria-label",
+                        isExpanded
+                            ? `Hide stops for bus ${bus.bus}`
+                            : `Show stops for bus ${bus.bus}`
+                    );
+
+
+                    const existingStops =
+                        wrapper.querySelector(
+                            ".stopping-card"
+                        );
+
+
+                    if (isExpanded) {
+
+                        if (!existingStops) {
+
+                            wrapper.appendChild(
+                                createStoppingCard(
+                                    bus.stops
+                                )
+                            );
+
+
+                            requestAnimationFrame(
+                                () => {
+
+                                    wrapper.scrollIntoView({
+
+                                        behavior:
+                                            "smooth",
+
+                                        block:
+                                            "nearest"
+
+                                    });
+
+                                }
+                            );
+                        }
+
+                    } else {
+
+                        if (existingStops) {
+
+                            existingStops.remove();
+                        }
                     }
+
                 }
             );
 
@@ -3006,14 +3963,15 @@
         }
 
 
-        /* =========================
+        /* =========================================================
            INFO BUILDER
-        ========================= */
+        ========================================================= */
 
         function buildInfo(
             icon,
             label,
-            value
+            value,
+            emphasize = false
         ) {
 
             const wrapper =
@@ -3031,7 +3989,9 @@
 
 
             const iconElement =
-                document.createElement("i");
+                document.createElement(
+                    "i"
+                );
 
 
             iconElement.className =
@@ -3050,7 +4010,10 @@
 
 
             const text =
-                createElement("div");
+                createElement(
+                    "div",
+                    "info-text"
+                );
 
 
             text.append(
@@ -3063,7 +4026,9 @@
 
                 createElement(
                     "div",
-                    "info-value",
+                    emphasize
+                        ? "info-value primary"
+                        : "info-value",
                     value
                 )
 
@@ -3080,11 +4045,13 @@
         }
 
 
-        /* =========================
-           STOPS CARD
-        ========================= */
+        /* =========================================================
+           STOP CARD
+        ========================================================= */
 
-        function createStoppingCard(stops) {
+        function createStoppingCard(
+            stops
+        ) {
 
             const card =
                 createElement(
@@ -3108,7 +4075,9 @@
 
 
             const icon =
-                document.createElement("i");
+                document.createElement(
+                    "i"
+                );
 
 
             icon.className =
@@ -3153,50 +4122,52 @@
                 );
 
 
-            stops.forEach(stop => {
+            stops.forEach(
+                stop => {
 
-                const row =
-                    createElement(
-                        "div",
-                        "stop"
+                    const row =
+                        createElement(
+                            "div",
+                            "stop"
+                        );
+
+
+                    const track =
+                        createElement(
+                            "div",
+                            "stop-track"
+                        );
+
+
+                    const name =
+                        createElement(
+                            "div",
+                            "stop-name",
+                            stop.name
+                        );
+
+
+                    const time =
+                        createElement(
+                            "div",
+                            "stop-time",
+                            stop.time
+                        );
+
+
+                    row.append(
+                        track,
+                        name,
+                        time
                     );
 
 
-                const track =
-                    createElement(
-                        "div",
-                        "stop-track"
+                    stopsContainer.appendChild(
+                        row
                     );
 
-
-                const name =
-                    createElement(
-                        "div",
-                        "stop-name",
-                        stop.name
-                    );
-
-
-                const time =
-                    createElement(
-                        "div",
-                        "stop-time",
-                        stop.time
-                    );
-
-
-                row.append(
-                    track,
-                    name,
-                    time
-                );
-
-
-                stopsContainer.appendChild(
-                    row
-                );
-
-            });
+                }
+            );
 
 
             card.append(
@@ -3209,28 +4180,31 @@
         }
 
 
-        /* =========================
+        /* =========================================================
            SEARCH HANDLER
-        ========================= */
+        ========================================================= */
 
         const handleSearch =
-            debounce(function () {
+            debounce(
+                () => {
 
-                const hasText =
-                    searchInput.value.length > 0;
-
-
-                clearSearch.style.display =
-                    hasText
-                        ? "flex"
-                        : "none";
+                    const hasText =
+                        searchInput.value.length > 0;
 
 
-                renderResults(
-                    searchInput.value
-                );
+                    clearSearch.classList.toggle(
+                        "visible",
+                        hasText
+                    );
 
-            }, 120);
+
+                    renderResults(
+                        searchInput.value
+                    );
+
+                },
+                120
+            );
 
 
         searchInput.addEventListener(
@@ -3239,30 +4213,36 @@
         );
 
 
-        /* =========================
+        /* =========================================================
            CLEAR SEARCH
-        ========================= */
+        ========================================================= */
 
         clearSearch.addEventListener(
             "click",
             () => {
 
-                searchInput.value = "";
+                searchInput.value =
+                    "";
 
-                clearSearch.style.display =
-                    "none";
 
-                renderResults("");
+                clearSearch.classList.remove(
+                    "visible"
+                );
+
+
+                renderResults(
+                    ""
+                );
+
 
                 searchInput.focus();
-
             }
         );
 
 
-        /* =========================
+        /* =========================================================
            PROFILE
-        ========================= */
+        ========================================================= */
 
         profileBtn.addEventListener(
             "click",
@@ -3276,67 +4256,78 @@
         );
 
 
-        /* =========================
-           BOTTOM NAV
-        ========================= */
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
 
         document
             .querySelectorAll(
                 ".bottom-nav .nav-item"
             )
-            .forEach(button => {
+            .forEach(
+                button => {
 
-                button.addEventListener(
-                    "click",
-                    () => {
+                    button.addEventListener(
+                        "click",
+                        () => {
 
-                        const target =
-                            button.dataset.target;
+                            const target =
+                                button.dataset.target;
 
 
-                        if (
-                            target === "explore"
-                        ) {
+                            if (
+                                target ===
+                                "home"
+                            ) {
 
-                            window.scrollTo({
-                                top: 0,
-                                behavior: "smooth"
-                            });
+                                window.location.href =
+                                    "index.html";
 
-                        }
+                                return;
+                            }
 
-                        else if (
-                            target === "home"
-                        ) {
 
-                            window.location.href =
-                                "index.html";
+                            if (
+                                target ===
+                                "explore"
+                            ) {
 
-                        }
+                                window.scrollTo({
 
-                        else {
+                                    top:
+                                        0,
+
+                                    behavior:
+                                        "smooth"
+
+                                });
+
+                                return;
+                            }
+
+
+                            const label =
+                                target
+                                    .charAt(0)
+                                    .toUpperCase()
+                                +
+                                target.slice(1);
+
 
                             showToast(
-                                `${
-                                    target
-                                        .charAt(0)
-                                        .toUpperCase()
-                                    +
-                                    target.slice(1)
-                                } page will be available soon.`
+                                `${label} page will be available soon.`
                             );
 
                         }
+                    );
 
-                    }
-                );
-
-            });
+                }
+            );
 
 
-        /* =========================
+        /* =========================================================
            INITIAL RENDER
-        ========================= */
+        ========================================================= */
 
         renderResults("");
 
